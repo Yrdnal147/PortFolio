@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Primary SEO Meta Tags -->
+    <title>Samuel Landry Woulle Ndedy — Développeur Mobile &amp; Fullstack (Flutter • React) &amp; UI/UX Designer</title>
+    <meta
+      name="title"
+      content="Samuel Landry Woulle Ndedy — Développeur Mobile & Fullstack (Flutter • React) & UI/UX Designer"
+    />
+    <meta
+      name="description"
+      content="Portfolio de Samuel Landry Woulle Ndedy, Développeur Mobile & Fullstack (Flutter, React, React Native, Laravel, Django, Supabase) et UI/UX Designer basé à Douala, Cameroun."
+    />
+    <meta
+      name="keywords"
+      content="Samuel Landry Woulle Ndedy, Développeur Flutter Douala, Développeur React Cameroun, Développeur Mobile Fullstack, UI/UX Designer Figma, Portfolio Développeur"
+    />
+    <meta name="author" content="Samuel Landry Woulle Ndedy" />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta
+      property="og:title"
+      content="Samuel Landry Woulle Ndedy — Développeur Mobile & Fullstack (Flutter • React)"
+    />
+    <meta
+      property="og:description"
+      content="Titulaire d'un cursus Master en Génie Logiciel, je conçois et développe des applications mobiles et web performantes, de la maquette Figma jusqu'au déploiement backend."
+    />
+    <meta property="og:site_name" content="Samuel.dev" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Samuel Landry Woulle Ndedy — Développeur Mobile & Fullstack"
+    />
+    <meta
+      name="twitter:description"
+      content="Développeur Mobile & Fullstack (Flutter • React) & UI/UX Designer basé à Douala, Cameroun."
+    />
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Prevent theme flash (Dark Mode by default) -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-canvas-light text-slate-900 dark:bg-canvas-dark dark:text-slate-100 antialiased selection:bg-blue-500/25 selection:text-blue-600 dark:selection:text-blue-300">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
