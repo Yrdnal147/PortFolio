@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Github,
-  ExternalLink,
+  ArrowRight,
   ArrowUpRight,
   X,
   CheckCircle2,
@@ -11,158 +11,142 @@ import {
   Briefcase,
   Users,
   Sparkles,
-  Link2,
-  RotateCcw,
   ChevronLeft,
   ChevronRight,
-  SlidersHorizontal,
+  MessageCircle,
+  Mail,
 } from 'lucide-react';
 import {
+  personalInfo,
   projects,
   projectCategories,
-  projectTechFilters,
 } from '../data/portfolioData';
 
-function ProjectMockupPlaceholder({ project }) {
+function ProjectVisualPreview({ project }) {
   const variant = project.mockupVariant;
 
   return (
-    <div
-      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-gradient-to-br ${project.accent} bg-[#111318] p-5`}
-    >
-      {/* Subtle architectural dot grid */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-25"
-        style={{
-          backgroundImage:
-            'radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)',
-          backgroundSize: '18px 18px',
-        }}
-      />
-
+    <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-gradient-to-br from-slate-100 via-primary-soft/60 to-slate-200/70 p-6 dark:from-surface-dark dark:via-secondary-dark/60 dark:to-canvas-dark">
       {variant === 'choozz' && (
-        <div className="relative z-10 w-56 rounded-2xl border border-secondary/70 bg-[#0C0E13]/95 p-3.5 shadow-2xl transition-transform duration-300 group-hover:-translate-y-1">
-          <div className="mb-2.5 flex items-center justify-between">
-            <span className="inline-flex items-center gap-1 rounded-full bg-primary/15 px-2 py-0.5 font-mono text-[10px] text-primary">
-              <MapPin className="h-2.5 w-2.5" aria-hidden="true" /> Douala •
-              Yaoundé
+        <div className="w-60 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg transition-transform duration-300 group-hover:-translate-y-1 dark:border-secondary/60 dark:bg-surface-dark">
+          <div className="mb-3 flex items-center justify-between">
+            <span className="inline-flex items-center gap-1 rounded-full bg-primary-soft px-2.5 py-0.5 text-[11px] font-bold text-primary-ink dark:bg-primary/15 dark:text-primary">
+              <MapPin className="h-3 w-3" aria-hidden="true" /> Douala • Yaoundé
             </span>
-            <span className="rounded bg-secondary/70 px-1.5 py-0.5 font-mono text-[9px] font-semibold text-white">
+            <span className="rounded-md bg-secondary px-2 py-0.5 text-[10px] font-bold text-white">
               VIP
             </span>
           </div>
-          <div className="h-14 rounded-lg bg-gradient-to-r from-primary/30 to-secondary/40 p-2.5">
-            <div className="h-2 w-24 rounded bg-white/80" />
-            <div className="mt-1.5 h-1.5 w-16 rounded bg-white/35" />
+          <div className="rounded-xl bg-gradient-to-r from-primary/25 to-primary/10 p-3 dark:from-primary/20 dark:to-secondary/40">
+            <div className="h-2.5 w-28 rounded-full bg-ink/80 dark:bg-white/85" />
+            <div className="mt-2 h-2 w-20 rounded-full bg-secondary/45 dark:bg-white/35" />
           </div>
-          <div className="mt-2.5 grid grid-cols-2 gap-2">
-            <div className="rounded-md border border-secondary/60 bg-secondary/20 p-2">
-              <div className="h-1.5 w-10 rounded bg-white/60" />
-              <div className="mt-1 h-1.5 w-6 rounded bg-primary/80" />
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <div className="rounded-xl border border-slate-200 bg-canvas-light p-2.5 dark:border-secondary/50 dark:bg-canvas-dark">
+              <div className="h-2 w-12 rounded-full bg-secondary/50 dark:bg-white/50" />
+              <div className="mt-1.5 h-2 w-8 rounded-full bg-primary" />
             </div>
-            <div className="rounded-md border border-secondary/60 bg-secondary/20 p-2">
-              <div className="h-1.5 w-12 rounded bg-white/60" />
-              <div className="mt-1 h-1.5 w-8 rounded bg-primary/50" />
+            <div className="rounded-xl border border-slate-200 bg-canvas-light p-2.5 dark:border-secondary/50 dark:bg-canvas-dark">
+              <div className="h-2 w-14 rounded-full bg-secondary/50 dark:bg-white/50" />
+              <div className="mt-1.5 h-2 w-10 rounded-full bg-primary/70" />
             </div>
           </div>
         </div>
       )}
 
       {variant === 'sonoritiz' && (
-        <div className="relative z-10 w-56 rounded-2xl border border-secondary/70 bg-[#0C0E13]/95 p-3.5 shadow-2xl transition-transform duration-300 group-hover:-translate-y-1">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-on shadow-lg shadow-primary/25">
+        <div className="w-60 rounded-2xl border border-secondary/60 bg-ink p-4 text-white shadow-lg transition-transform duration-300 group-hover:-translate-y-1">
+          <div className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-on shadow-md shadow-primary/25">
               <Music className="h-5 w-5" aria-hidden="true" />
             </div>
             <div className="flex-1">
-              <div className="h-2 w-24 rounded bg-white/80" />
-              <div className="mt-1.5 h-1.5 w-16 rounded bg-white/35" />
+              <div className="h-2.5 w-24 rounded-full bg-white/90" />
+              <div className="mt-2 h-2 w-16 rounded-full bg-white/40" />
             </div>
           </div>
-          <div className="mt-4 flex h-7 items-end justify-between gap-1 px-1">
+          <div className="mt-4 flex h-8 items-end justify-between gap-1 px-1">
             {[40, 75, 55, 95, 65, 85, 45, 90, 60, 75, 50, 80].map((h, i) => (
               <span
                 key={i}
                 style={{ height: `${h}%` }}
-                className={`w-1.5 rounded-full transition-all duration-300 ${
+                className={`w-1.5 rounded-full ${
                   i < 7 ? 'bg-primary' : 'bg-secondary'
                 }`}
               />
             ))}
           </div>
-          <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-secondary/60">
+          <div className="mt-3.5 h-1.5 w-full overflow-hidden rounded-full bg-secondary/70">
             <div className="h-full w-3/5 rounded-full bg-primary" />
           </div>
         </div>
       )}
 
       {variant === 'jobconnect' && (
-        <div className="relative z-10 flex w-full max-w-[16.5rem] items-end gap-2.5 transition-transform duration-300 group-hover:-translate-y-1">
-          <div className="flex-1 rounded-xl border border-secondary/70 bg-[#0C0E13]/95 p-3 shadow-2xl">
-            <div className="mb-2 flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-secondary" />
-              <span className="h-2 w-2 rounded-full bg-secondary" />
-              <span className="ml-auto font-mono text-[9px] text-primary">
+        <div className="flex w-full max-w-[17rem] items-end gap-2.5 transition-transform duration-300 group-hover:-translate-y-1">
+          <div className="flex-1 rounded-2xl border border-slate-200 bg-white p-3.5 shadow-lg dark:border-secondary/60 dark:bg-surface-dark">
+            <div className="mb-2.5 flex items-center justify-between">
+              <div className="flex gap-1">
+                <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-secondary" />
+                <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-secondary" />
+              </div>
+              <span className="rounded-full bg-primary-soft px-2 py-0.5 text-[10px] font-bold text-primary-ink dark:bg-primary/15 dark:text-primary">
                 Web + Mobile
               </span>
             </div>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 rounded-lg border border-secondary/60 bg-secondary/20 p-2">
+              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-canvas-light p-2 dark:border-secondary/50 dark:bg-canvas-dark">
                 <Briefcase
-                  className="h-3.5 w-3.5 text-primary"
+                  className="h-4 w-4 text-primary-ink dark:text-primary"
                   aria-hidden="true"
                 />
                 <div className="flex-1 space-y-1">
-                  <div className="h-1.5 w-20 rounded bg-white/75" />
-                  <div className="h-1.5 w-12 rounded bg-white/30" />
+                  <div className="h-2 w-20 rounded-full bg-ink/75 dark:bg-white/80" />
+                  <div className="h-1.5 w-12 rounded-full bg-secondary/40 dark:bg-white/30" />
                 </div>
               </div>
-              <div className="flex items-center gap-2 rounded-lg border border-secondary/60 bg-secondary/20 p-2">
+              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-canvas-light p-2 dark:border-secondary/50 dark:bg-canvas-dark">
                 <Sparkles
-                  className="h-3.5 w-3.5 text-primary"
+                  className="h-4 w-4 text-primary-ink dark:text-primary"
                   aria-hidden="true"
                 />
                 <div className="flex-1 space-y-1">
-                  <div className="h-1.5 w-16 rounded bg-white/75" />
-                  <div className="h-1.5 w-10 rounded bg-white/30" />
+                  <div className="h-2 w-16 rounded-full bg-ink/75 dark:bg-white/80" />
+                  <div className="h-1.5 w-10 rounded-full bg-secondary/40 dark:bg-white/30" />
                 </div>
               </div>
             </div>
           </div>
-          <div className="h-24 w-14 shrink-0 rounded-xl border border-secondary/70 bg-[#0C0E13]/95 p-2 shadow-xl">
-            <div className="mx-auto mb-2 h-1 w-5 rounded-full bg-secondary" />
+          <div className="h-24 w-14 shrink-0 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg dark:border-secondary/60 dark:bg-surface-dark">
+            <div className="mx-auto mb-2 h-1 w-5 rounded-full bg-slate-300 dark:bg-secondary" />
             <div className="space-y-1.5">
-              <div className="h-4 rounded bg-primary/35" />
-              <div className="h-4 rounded bg-secondary/45" />
-              <div className="h-4 rounded bg-secondary/45" />
+              <div className="h-4 rounded-md bg-primary/40" />
+              <div className="h-4 rounded-md bg-slate-200 dark:bg-secondary/50" />
+              <div className="h-4 rounded-md bg-slate-200 dark:bg-secondary/50" />
             </div>
           </div>
         </div>
       )}
 
       {variant === 'social' && (
-        <div className="relative z-10 w-56 rounded-2xl border border-secondary/70 bg-[#0C0E13]/95 p-3.5 shadow-2xl transition-transform duration-300 group-hover:-translate-y-1">
-          <div className="mb-2.5 flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/20 text-primary">
-              <Users className="h-3.5 w-3.5" aria-hidden="true" />
+        <div className="w-60 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg transition-transform duration-300 group-hover:-translate-y-1 dark:border-secondary/60 dark:bg-surface-dark">
+          <div className="mb-3 flex items-center gap-2.5">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-soft text-primary-ink dark:bg-primary/15 dark:text-primary">
+              <Users className="h-4 w-4" aria-hidden="true" />
             </div>
-            <div className="space-y-1">
-              <div className="h-1.5 w-20 rounded bg-white/75" />
-              <div className="h-1 w-12 rounded bg-white/30" />
+            <div className="space-y-1.5">
+              <div className="h-2 w-24 rounded-full bg-ink/80 dark:bg-white/80" />
+              <div className="h-1.5 w-14 rounded-full bg-secondary/40 dark:bg-white/35" />
             </div>
           </div>
-          <div className="h-12 rounded-lg border border-secondary/60 bg-secondary/20 p-2">
-            <div className="h-1.5 w-full rounded bg-white/35" />
-            <div className="mt-1.5 h-1.5 w-4/5 rounded bg-white/20" />
-            <div className="mt-1.5 h-1.5 w-2/5 rounded bg-primary/65" />
+          <div className="rounded-xl border border-slate-200 bg-canvas-light p-2.5 dark:border-secondary/50 dark:bg-canvas-dark">
+            <div className="h-2 w-full rounded-full bg-secondary/35 dark:bg-white/35" />
+            <div className="mt-1.5 h-2 w-4/5 rounded-full bg-secondary/25 dark:bg-white/25" />
+            <div className="mt-2 h-2 w-2/5 rounded-full bg-primary" />
           </div>
-          <div className="mt-2.5 flex items-center gap-2">
-            <span className="h-2 w-8 rounded-full bg-primary/55" />
-            <span className="h-2 w-8 rounded-full bg-secondary/80" />
-            <span className="ml-auto font-mono text-[9px] text-slate-400">
-              Firebase
-            </span>
+          <div className="mt-3 flex items-center gap-2">
+            <span className="h-2.5 w-10 rounded-full bg-primary/60" />
+            <span className="h-2.5 w-10 rounded-full bg-slate-200 dark:bg-secondary" />
           </div>
         </div>
       )}
@@ -170,7 +154,7 @@ function ProjectMockupPlaceholder({ project }) {
   );
 }
 
-function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
+function ProjectCard({ project, onOpenDetails }) {
   const [imgError, setImgError] = useState(false);
 
   return (
@@ -178,143 +162,92 @@ function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
       layout
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.97 }}
-      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-secondary/20 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/55 hover:shadow-xl hover:shadow-primary/5 dark:border-secondary/50 dark:bg-surface-dark/80 dark:hover:border-primary/55"
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.28 }}
+      className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-card dark:border-secondary/45 dark:bg-surface-dark dark:hover:border-primary/50"
     >
-      {/* Image / Mockup zone with editorial index */}
-      <div className="relative h-52 w-full overflow-hidden border-b border-secondary/15 dark:border-secondary/45">
+      {/* Clean Visual Preview */}
+      <div className="relative h-56 w-full overflow-hidden border-b border-slate-200/80 dark:border-secondary/40">
         {project.image && !imgError ? (
           <img
             src={project.image}
-            alt={`Aperçu du projet ${project.title}`}
+            alt={`Aperçu de ${project.title}`}
             loading="lazy"
             onError={() => setImgError(true)}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : (
-          <ProjectMockupPlaceholder project={project} />
+          <ProjectVisualPreview project={project} />
         )}
 
-        {/* Index badge top-left */}
-        <span
-          aria-hidden="true"
-          className="absolute left-3 top-3 rounded-md border border-primary/40 bg-black/70 px-2 py-0.5 font-mono text-[11px] font-semibold text-primary backdrop-blur-md"
-        >
-          {project.index}
-        </span>
-
-        {/* Year + Category badge bottom-right */}
-        <span className="absolute bottom-3 right-3 rounded-md border border-secondary/60 bg-black/70 px-2 py-0.5 font-mono text-[10px] text-slate-200 backdrop-blur-md">
-          {project.year} · {project.subtitle}
+        <span className="absolute left-4 top-4 rounded-full border border-slate-200/80 bg-white/95 px-3 py-1 text-xs font-bold text-ink shadow-sm backdrop-blur-sm dark:border-secondary/60 dark:bg-surface-dark/90 dark:text-white">
+          {project.badge}
         </span>
       </div>
 
-      {/* Card body */}
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
-              {project.title}
-            </h3>
-            <p className="mt-0.5 font-mono text-[11px] text-secondary/85 dark:text-slate-400">
-              {project.role}
-            </p>
-          </div>
+      {/* Clear, human-friendly text */}
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <div className="flex items-baseline justify-between gap-3">
+          <h3 className="text-xl font-extrabold tracking-tight text-ink dark:text-white">
+            {project.title}
+          </h3>
+          <span className="font-mono text-xs font-semibold text-secondary dark:text-slate-400">
+            {project.year}
+          </span>
+        </div>
+
+        <p className="mt-3 text-[15px] leading-relaxed text-secondary dark:text-slate-300">
+          {project.summary}
+        </p>
+
+        {/* Discreet tech tags for technical recruiters */}
+        <div className="mt-5 flex flex-wrap gap-1.5">
+          {project.stack.map((tech) => (
+            <span
+              key={tech}
+              className="rounded-lg border border-slate-200 bg-canvas-light px-2.5 py-1 font-mono text-xs font-medium text-secondary dark:border-secondary/50 dark:bg-canvas-dark dark:text-slate-300"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Reviewed CTAs: 1 clear primary action + 1 discreet tech link */}
+        <div className="mt-6 flex flex-col gap-2.5 border-t border-slate-200/80 pt-5 dark:border-secondary/40 sm:flex-row sm:items-center sm:justify-between">
           <button
             type="button"
             onClick={(e) => onOpenDetails(project, e.currentTarget)}
-            aria-label={`Ouvrir l'étude de cas de ${project.title}`}
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-secondary/20 text-secondary transition-colors hover:border-primary/55 hover:text-primary-ink dark:border-secondary/50 dark:text-slate-400 dark:hover:border-primary/55 dark:hover:text-primary"
+            className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-on shadow-sm shadow-primary/20 transition-all hover:bg-primary-hover active:scale-[0.98]"
           >
-            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            <span>Voir le projet en détail</span>
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </button>
-        </div>
 
-        <p className="mt-3 text-sm leading-relaxed text-secondary dark:text-slate-400">
-          {project.description}
-        </p>
-
-        {/* Interactive stack badges (click to filter by tech) */}
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {project.stack.map((tech) => {
-            const isFilterable = projectTechFilters.includes(tech);
-            const isSelected = activeTech === tech;
-            if (!isFilterable) {
-              return (
-                <span
-                  key={tech}
-                  className="rounded-md border border-secondary/20 bg-secondary/[0.06] px-2.5 py-0.5 font-mono text-[11px] font-medium text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300"
-                >
-                  {tech}
-                </span>
-              );
-            }
-            return (
-              <button
-                key={tech}
-                type="button"
-                onClick={() => onSelectTech(isSelected ? null : tech)}
-                aria-pressed={isSelected}
-                title={`Filtrer les projets utilisant ${tech}`}
-                className={`rounded-md border px-2.5 py-0.5 font-mono text-[11px] font-semibold transition-colors ${
-                  isSelected
-                    ? 'border-primary bg-primary text-primary-on'
-                    : 'border-secondary/20 bg-secondary/[0.06] text-slate-800 hover:border-primary/60 hover:text-primary-ink dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-200 dark:hover:border-primary/60 dark:hover:text-primary'
-                }`}
-              >
-                {tech}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Actions */}
-        <div className="mt-6 flex items-center gap-3 border-t border-secondary/15 pt-4 dark:border-secondary/40">
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-secondary/25 bg-secondary/[0.08] px-3.5 py-2 text-xs font-semibold text-slate-900 transition-colors hover:border-secondary/50 hover:bg-secondary/15 dark:border-secondary/60 dark:bg-secondary/35 dark:text-slate-100 dark:hover:border-primary/45 dark:hover:bg-secondary/55"
+            className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-secondary transition-colors hover:border-secondary/40 hover:text-ink dark:border-secondary/55 dark:bg-canvas-dark dark:text-slate-300 dark:hover:border-primary/45 dark:hover:text-white"
           >
-            <Github className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>Code GitHub</span>
+            <Github className="h-4 w-4" aria-hidden="true" />
+            <span>Code</span>
           </a>
-
-          <button
-            type="button"
-            onClick={(e) => onOpenDetails(project, e.currentTarget)}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-3.5 py-2 text-xs font-bold text-primary-on transition-colors hover:bg-primary-hover"
-          >
-            <span>Démo / Détails</span>
-            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-          </button>
         </div>
       </div>
     </motion.article>
   );
 }
 
-export default function Projects({
-  activeCategory,
-  activeTech,
-  onCategoryChange,
-  onTechChange,
-  onResetFilters,
-  onNotify,
-}) {
+export default function Projects() {
+  const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const triggerRef = useRef(null);
   const closeBtnRef = useRef(null);
 
-  const filteredProjects = projects.filter((project) => {
-    const matchesCategory =
-      activeCategory === 'Tous' || project.categories.includes(activeCategory);
-    const matchesTech = !activeTech || project.stack.includes(activeTech);
-    return matchesCategory && matchesTech;
-  });
-
-  const hasActiveFilter = activeCategory !== 'Tous' || Boolean(activeTech);
+  const filteredProjects =
+    activeCategory === 'all'
+      ? projects
+      : projects.filter((p) => p.categories.includes(activeCategory));
 
   const navPool = filteredProjects.length > 0 ? filteredProjects : projects;
   const selectedIndex = navPool.findIndex((p) => p.id === selectedProjectId);
@@ -330,9 +263,7 @@ export default function Projects({
 
   const closeDetails = () => {
     setSelectedProjectId(null);
-    if (triggerRef.current) {
-      triggerRef.current.focus();
-    }
+    triggerRef.current?.focus();
   };
 
   const stepProject = (delta) => {
@@ -346,222 +277,145 @@ export default function Projects({
     closeBtnRef.current?.focus();
 
     const onKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        closeDetails();
-      } else if (e.key === 'ArrowRight') {
-        stepProject(1);
-      } else if (e.key === 'ArrowLeft') {
-        stepProject(-1);
-      }
+      if (e.key === 'Escape') closeDetails();
+      if (e.key === 'ArrowRight') stepProject(1);
+      if (e.key === 'ArrowLeft') stepProject(-1);
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [selectedProject, selectedIndex, navPool.length]);
 
-  const handleShareFilteredLink = async () => {
-    const url = new URL(window.location.href);
-    url.hash = 'projects';
-    if (activeCategory !== 'Tous') {
-      url.searchParams.set('cat', activeCategory);
-    } else {
-      url.searchParams.delete('cat');
-    }
-    if (activeTech) {
-      url.searchParams.set('tech', activeTech);
-    } else {
-      url.searchParams.delete('tech');
-    }
-
-    try {
-      await navigator.clipboard.writeText(url.toString());
-      onNotify?.('Lien de sélection copié !');
-    } catch {
-      onNotify?.('URL mise à jour dans la barre d’adresse.');
-    }
-  };
-
-  const getCategoryCount = (cat) =>
-    projects.filter((p) => {
-      const catMatch = cat === 'Tous' || p.categories.includes(cat);
-      const techMatch = !activeTech || p.stack.includes(activeTech);
-      return catMatch && techMatch;
-    }).length;
+  const getCount = (catId) =>
+    catId === 'all'
+      ? projects.length
+      : projects.filter((p) => p.categories.includes(catId)).length;
 
   return (
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="border-b border-secondary/15 py-20 dark:border-secondary/40 sm:py-24"
+      className="border-b border-slate-200/80 bg-canvas-light py-20 dark:border-secondary/35 dark:bg-canvas-dark sm:py-24"
     >
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        {/* Editorial header */}
-        <div className="mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.4 }}
-          >
-            <div className="flex items-center gap-2.5">
-              <span className="rounded-md bg-primary/15 px-2 py-0.5 font-mono text-xs font-semibold text-primary-ink dark:text-primary">
-                [P]
-              </span>
-              <span className="font-mono text-xs font-medium uppercase tracking-widest text-secondary dark:text-slate-400">
-                01 / Réalisations
-              </span>
-              <span className="font-mono text-xs text-secondary/70 dark:text-slate-500">
-                — 0{filteredProjects.length} / 0{projects.length}
-              </span>
-            </div>
-            <h2
-              id="projects-heading"
-              className="mt-2.5 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl"
-            >
-              Projets clés
-            </h2>
-            <p className="mt-2 max-w-xl text-sm text-secondary dark:text-slate-400 sm:text-base">
-              Filtre par domaine ou par technologie pour explorer directement
-              les réalisations pertinentes pour ton équipe.
-            </p>
-          </motion.div>
-
-          {/* Primary Category Filter Tabs */}
-          <div
-            role="tablist"
-            aria-label="Filtrer les projets par catégorie"
-            className="inline-flex flex-wrap items-center gap-1 rounded-xl border border-secondary/20 bg-white p-1 dark:border-secondary/50 dark:bg-surface-dark/80"
-          >
-            {projectCategories.map((category) => {
-              const isActive = activeCategory === category;
-              const count = getCategoryCount(category);
-              return (
-                <button
-                  key={category}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => onCategoryChange(category)}
-                  className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-mono text-xs font-semibold transition-all ${
-                    isActive
-                      ? 'bg-primary text-primary-on shadow-sm shadow-primary/25'
-                      : 'text-secondary hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
-                  }`}
-                >
-                  <span>{category}</span>
-                  <span
-                    className={`text-[10px] ${
-                      isActive ? 'text-primary-on/75' : 'text-secondary/60 dark:text-slate-500'
-                    }`}
-                  >
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Secondary Tech Stack Filter Bar + Shareable URL */}
-        <div
-          data-bp-box
-          className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-secondary/15 bg-secondary/[0.04] px-4 py-3 dark:border-secondary/45 dark:bg-secondary/15"
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Clear header */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4 }}
+          className="max-w-2xl"
         >
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="mr-1 inline-flex items-center gap-1.5 font-mono text-[11px] text-secondary dark:text-slate-400">
-              <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>Stack :</span>
-            </span>
-            {projectTechFilters.map((tech) => {
-              const isSelected = activeTech === tech;
-              return (
-                <button
-                  key={tech}
-                  type="button"
-                  aria-pressed={isSelected}
-                  onClick={() => onTechChange(isSelected ? null : tech)}
-                  className={`rounded-md border px-2.5 py-1 font-mono text-[11px] font-semibold transition-colors ${
-                    isSelected
-                      ? 'border-primary bg-primary text-primary-on'
-                      : 'border-secondary/20 bg-white text-secondary hover:border-primary/50 hover:text-primary-ink dark:border-secondary/50 dark:bg-surface-dark/80 dark:text-slate-300 dark:hover:border-primary/50 dark:hover:text-primary'
+          <span className="inline-block rounded-full bg-primary-soft px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-ink dark:bg-primary/15 dark:text-primary">
+            Réalisations
+          </span>
+          <h2
+            id="projects-heading"
+            className="mt-3 text-2xl font-extrabold tracking-tight text-ink dark:text-white sm:text-3xl"
+          >
+            Quelques projets que j’ai conçus et développés
+          </h2>
+          <p className="mt-3 text-base leading-relaxed text-secondary dark:text-slate-300">
+            Découvrez des exemples concrets d’applications mobiles, de sites web
+            et de maquettes réalisés pour répondre à de vrais besoins.
+          </p>
+        </motion.div>
+
+        {/* Simple, non-technical filter tabs */}
+        <div
+          role="tablist"
+          aria-label="Choisir un type de projet"
+          className="mt-8 flex flex-wrap gap-2"
+        >
+          {projectCategories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-all ${
+                  isActive
+                    ? 'border-primary bg-primary text-primary-on shadow-sm shadow-primary/25'
+                    : 'border-slate-200 bg-white text-secondary hover:border-secondary/40 hover:text-ink dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-300 dark:hover:border-primary/45 dark:hover:text-white'
+                }`}
+              >
+                <span>{cat.label}</span>
+                <span
+                  className={`rounded-full px-1.5 py-0.5 text-xs ${
+                    isActive
+                      ? 'bg-primary-on/15 text-primary-on'
+                      : 'bg-slate-100 text-secondary dark:bg-secondary/40 dark:text-slate-300'
                   }`}
                 >
-                  {tech}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="sr-only" aria-live="polite">
-              {filteredProjects.length}{' '}
-              {filteredProjects.length > 1
-                ? 'réalisations affichées'
-                : 'réalisation affichée'}
-            </span>
-            {hasActiveFilter && (
-              <>
-                <button
-                  type="button"
-                  onClick={handleShareFilteredLink}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-primary/40 bg-primary/15 px-2.5 py-1 font-mono text-[11px] font-semibold text-primary-ink transition-colors hover:bg-primary/20 dark:text-primary"
-                >
-                  <Link2 className="h-3 w-3" aria-hidden="true" />
-                  <span>Copier le lien filtré</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={onResetFilters}
-                  className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1 font-mono text-[11px] font-medium text-secondary transition-colors hover:text-slate-900 dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-300 dark:hover:text-white"
-                >
-                  <RotateCcw className="h-3 w-3" aria-hidden="true" />
-                  <span>Réinitialiser</span>
-                </button>
-              </>
-            )}
-          </div>
+                  {getCount(cat.id)}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Responsive 2-column grid OR empty state */}
-        {filteredProjects.length > 0 ? (
-          <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  activeTech={activeTech}
-                  onSelectTech={onTechChange}
-                  onOpenDetails={openDetails}
-                />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        ) : (
-          <div className="rounded-2xl border border-dashed border-secondary/35 bg-white/60 p-10 text-center dark:border-secondary/60 dark:bg-surface-dark/40">
-            <p className="text-sm font-medium text-secondary dark:text-slate-300">
-              Aucune réalisation ne combine{' '}
-              <span className="font-mono font-semibold text-primary-ink dark:text-primary">
-                {activeCategory}
-              </span>{' '}
-              et{' '}
-              <span className="font-mono font-semibold text-primary-ink dark:text-primary">
-                {activeTech}
-              </span>
-              .
+        <span className="sr-only" aria-live="polite">
+          {filteredProjects.length}{' '}
+          {filteredProjects.length > 1 ? 'projets affichés' : 'projet affiché'}
+        </span>
+
+        {/* Spacious 2-column grid */}
+        <motion.div
+          layout
+          className="mt-8 grid grid-cols-1 gap-7 md:grid-cols-2"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                onOpenDetails={openDetails}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Conversion CTA banner below projects */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4 }}
+          className="mt-12 flex flex-col items-start justify-between gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-secondary/50 dark:bg-surface-dark sm:p-8 lg:flex-row lg:items-center"
+        >
+          <div>
+            <h3 className="text-lg font-extrabold text-ink dark:text-white sm:text-xl">
+              Vous avez une idée d’application ou un poste à pourvoir ?
+            </h3>
+            <p className="mt-1.5 text-sm text-secondary dark:text-slate-300 sm:text-base">
+              Expliquez-moi simplement votre besoin, je vous réponds rapidement
+              et sans jargon.
             </p>
-            <button
-              type="button"
-              onClick={onResetFilters}
-              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-bold text-primary-on transition-colors hover:bg-primary-hover"
-            >
-              <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>Afficher tous les projets</span>
-            </button>
           </div>
-        )}
+          <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row">
+            <a
+              href={personalInfo.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-primary-on shadow-sm shadow-primary/25 transition-all hover:bg-primary-hover"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              <span>Discuter sur WhatsApp</span>
+            </a>
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-secondary px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-secondary-light"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              <span>Envoyer un email</span>
+            </a>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Structured Case Study Modal with Prev/Next navigation */}
+      {/* Clear, Plain-Language Project Details Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -569,7 +423,7 @@ export default function Projects({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeDetails}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 p-4 backdrop-blur-sm"
           >
             <motion.div
               role="dialog"
@@ -580,73 +434,56 @@ export default function Projects({
               exit={{ opacity: 0, scale: 0.96, y: 12 }}
               transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-secondary/25 bg-white shadow-2xl dark:border-secondary/60 dark:bg-[#111318]"
+              className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-secondary/60 dark:bg-surface-dark"
             >
-              {/* Sticky modal header */}
-              <div className="sticky top-0 z-10 flex items-start justify-between border-b border-secondary/15 bg-white/95 px-6 py-4 backdrop-blur-md dark:border-secondary/45 dark:bg-[#111318]/95">
+              {/* Modal header */}
+              <div className="sticky top-0 z-10 flex items-start justify-between border-b border-slate-200 bg-white/95 px-6 py-5 backdrop-blur-md dark:border-secondary/45 dark:bg-surface-dark/95">
                 <div>
-                  <div className="flex items-center gap-2">
-                    <span className="rounded bg-primary/15 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-primary-ink dark:text-primary">
-                      {selectedProject.index} / 0{projects.length}
-                    </span>
-                    <span className="font-mono text-xs text-secondary dark:text-slate-400">
-                      {selectedProject.year} · {selectedProject.subtitle}
-                    </span>
-                  </div>
+                  <span className="inline-block rounded-full bg-primary-soft px-3 py-0.5 text-xs font-bold text-primary-ink dark:bg-primary/15 dark:text-primary">
+                    {selectedProject.badge} · {selectedProject.year}
+                  </span>
                   <h3
                     id="project-modal-title"
-                    className="mt-1 text-xl font-bold text-slate-900 dark:text-white"
+                    className="mt-2 text-2xl font-extrabold text-ink dark:text-white"
                   >
                     {selectedProject.title}
                   </h3>
-                  <p className="font-mono text-xs text-secondary dark:text-slate-400">
-                    {selectedProject.role}
-                  </p>
                 </div>
 
                 <button
                   ref={closeBtnRef}
                   type="button"
                   onClick={closeDetails}
-                  aria-label="Fermer l'étude de cas"
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-secondary/25 text-secondary transition-colors hover:border-primary/50 hover:text-slate-900 dark:border-secondary/55 dark:text-slate-400 dark:hover:text-white"
+                  aria-label="Fermer la fenêtre du projet"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-secondary transition-colors hover:bg-slate-100 hover:text-ink dark:border-secondary/55 dark:text-slate-300 dark:hover:bg-secondary/40 dark:hover:text-white"
                 >
-                  <X className="h-4 w-4" aria-hidden="true" />
+                  <X className="h-5 w-5" aria-hidden="true" />
                 </button>
               </div>
 
-              {/* Structured Case Study Content */}
-              <div className="space-y-6 px-6 py-5">
-                <div className="rounded-xl border border-secondary/15 bg-secondary/[0.05] p-4 dark:border-secondary/45 dark:bg-secondary/20">
-                  <h4 className="font-mono text-[11px] font-semibold uppercase tracking-wider text-primary-ink dark:text-primary">
-                    Contexte &amp; objectif
+              {/* Modal body */}
+              <div className="space-y-6 px-6 py-6">
+                <div className="rounded-2xl border border-primary/30 bg-primary-soft/60 p-5 dark:border-primary/25 dark:bg-primary/10">
+                  <h4 className="text-sm font-bold text-primary-ink dark:text-primary">
+                    À quoi sert ce projet ?
                   </h4>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-                    {selectedProject.context}
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink dark:text-slate-200 sm:text-[15px]">
+                    {selectedProject.problem}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="mb-1.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-secondary dark:text-slate-400">
-                    Approche &amp; conception
+                  <h4 className="mb-3 text-sm font-bold text-ink dark:text-white">
+                    Ce que j’ai réalisé
                   </h4>
-                  <p className="text-sm leading-relaxed text-secondary dark:text-slate-300">
-                    {selectedProject.longDescription}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="mb-2.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-secondary dark:text-slate-400">
-                    Points clés réalisés
-                  </h4>
-                  <ul className="space-y-2">
-                    {selectedProject.highlights.map((item) => (
+                  <ul className="space-y-2.5">
+                    {selectedProject.whatIBuilt.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300"
+                        className="flex items-start gap-3 text-sm leading-relaxed text-secondary dark:text-slate-300 sm:text-[15px]"
                       >
                         <CheckCircle2
-                          className="mt-0.5 h-4 w-4 shrink-0 text-primary-ink dark:text-primary"
+                          className="mt-0.5 h-5 w-5 shrink-0 text-primary-ink dark:text-primary"
                           aria-hidden="true"
                         />
                         <span>{item}</span>
@@ -655,65 +492,42 @@ export default function Projects({
                   </ul>
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <h4 className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-secondary dark:text-slate-400">
-                      Livrables
-                    </h4>
-                    <div className="flex flex-wrap gap-1.5">
-                      {selectedProject.deliverables.map((deliv) => (
-                        <span
-                          key={deliv}
-                          className="rounded-md border border-secondary/20 bg-secondary/[0.05] px-2.5 py-1 text-xs font-medium text-slate-700 dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-200"
-                        >
-                          {deliv}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-secondary dark:text-slate-400">
-                      Stack technique
-                    </h4>
-                    <div className="flex flex-wrap gap-1.5">
-                      {selectedProject.stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-md border border-primary/35 bg-primary/15 px-2.5 py-1 font-mono text-xs font-semibold text-primary-ink dark:text-primary"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                <div>
+                  <h4 className="mb-2.5 text-sm font-bold text-ink dark:text-white">
+                    Technologies utilisées
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-lg border border-slate-200 bg-canvas-light px-3 py-1.5 font-mono text-xs font-semibold text-ink dark:border-secondary/55 dark:bg-canvas-dark dark:text-slate-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* Footer: Prev/Next stepper + GitHub/Demo actions */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-secondary/15 bg-secondary/[0.04] px-6 py-4 dark:border-secondary/45 dark:bg-black/30">
+              {/* Modal footer with clear navigation & CTA */}
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 bg-canvas-light px-6 py-4 dark:border-secondary/45 dark:bg-canvas-dark/70">
                 {navPool.length > 1 ? (
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-2">
                     <button
                       type="button"
                       onClick={() => stepProject(-1)}
-                      aria-label="Projet précédent"
-                      className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-secondary transition-colors hover:border-primary/50 hover:text-primary-ink dark:border-secondary/55 dark:bg-surface-dark dark:text-slate-300 dark:hover:text-primary"
+                      className="inline-flex min-h-[40px] items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 text-xs font-bold text-secondary hover:text-ink dark:border-secondary/55 dark:bg-surface-dark dark:text-slate-200"
                     >
-                      <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
-                      <span>Préc.</span>
+                      <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+                      <span>Précédent</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => stepProject(1)}
-                      aria-label="Projet suivant"
-                      className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-secondary transition-colors hover:border-primary/50 hover:text-primary-ink dark:border-secondary/55 dark:bg-surface-dark dark:text-slate-300 dark:hover:text-primary"
+                      className="inline-flex min-h-[40px] items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 text-xs font-bold text-secondary hover:text-ink dark:border-secondary/55 dark:bg-surface-dark dark:text-slate-200"
                     >
-                      <span>Suiv.</span>
-                      <ChevronRight
-                        className="h-3.5 w-3.5"
-                        aria-hidden="true"
-                      />
+                      <span>Suivant</span>
+                      <ChevronRight className="h-4 w-4" aria-hidden="true" />
                     </button>
                   </div>
                 ) : (
@@ -725,10 +539,10 @@ export default function Projects({
                     href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border border-secondary/30 bg-white px-4 py-2 text-xs font-semibold text-slate-900 transition-colors hover:bg-secondary/10 dark:border-secondary/60 dark:bg-secondary/35 dark:text-slate-100 dark:hover:bg-secondary/55"
+                    className="inline-flex min-h-[42px] items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 text-xs font-bold text-ink hover:bg-slate-50 dark:border-secondary/55 dark:bg-surface-dark dark:text-white"
                   >
-                    <Github className="h-3.5 w-3.5" aria-hidden="true" />
-                    <span>Voir sur GitHub</span>
+                    <Github className="h-4 w-4" aria-hidden="true" />
+                    <span>Code GitHub</span>
                   </a>
 
                   {selectedProject.demoUrl ? (
@@ -736,25 +550,19 @@ export default function Projects({
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-bold text-primary-on transition-colors hover:bg-primary-hover"
+                      className="inline-flex min-h-[42px] items-center gap-2 rounded-xl bg-primary px-4 text-xs font-bold text-primary-on hover:bg-primary-hover"
                     >
                       <span>Ouvrir la démo</span>
-                      <ExternalLink
-                        className="h-3.5 w-3.5"
-                        aria-hidden="true"
-                      />
+                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                     </a>
                   ) : (
                     <a
                       href="#contact"
                       onClick={closeDetails}
-                      className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-bold text-primary-on transition-colors hover:bg-primary-hover"
+                      className="inline-flex min-h-[42px] items-center gap-2 rounded-xl bg-primary px-4 text-xs font-bold text-primary-on hover:bg-primary-hover"
                     >
-                      <span>Demander une démo</span>
-                      <ArrowUpRight
-                        className="h-3.5 w-3.5"
-                        aria-hidden="true"
-                      />
+                      <span>Discuter d’un projet similaire</span>
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </a>
                   )}
                 </div>

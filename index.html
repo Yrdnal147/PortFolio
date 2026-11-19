@@ -1,49 +1,49 @@
 <!doctype html>
-<html lang="fr" class="dark scroll-smooth">
+<html lang="fr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Primary SEO Meta Tags -->
-    <title>Samuel Landry Woulle Ndedy — Développeur Mobile &amp; Fullstack (Flutter • React) &amp; UI/UX Designer</title>
+    <title>Samuel Landry Woulle Ndedy — Développeur Mobile, Web &amp; Designer UI/UX</title>
     <meta
       name="title"
-      content="Samuel Landry Woulle Ndedy — Développeur Mobile & Fullstack (Flutter • React) & UI/UX Designer"
+      content="Samuel Landry Woulle Ndedy — Développeur Mobile, Web & Designer UI/UX"
     />
     <meta
       name="description"
-      content="Portfolio de Samuel Landry Woulle Ndedy, Développeur Mobile & Fullstack (Flutter, React, React Native, Laravel, Django, Supabase) et UI/UX Designer basé à Douala, Cameroun."
+      content="Portfolio de Samuel Landry Woulle Ndedy : création d'applications mobiles (Flutter, React Native), sites web (React, Laravel, Django) et design d'interfaces (Figma). Basé à Douala, Cameroun."
     />
     <meta
       name="keywords"
-      content="Samuel Landry Woulle Ndedy, Développeur Flutter Douala, Développeur React Cameroun, Développeur Mobile Fullstack, UI/UX Designer Figma, Portfolio Développeur"
+      content="Samuel Landry Woulle Ndedy, Samuel Ndedy, Développeur Mobile Douala, Développeur Flutter Cameroun, Développeur React, UI/UX Designer Figma, Portfolio"
     />
     <meta name="author" content="Samuel Landry Woulle Ndedy" />
-    <meta name="theme-color" content="#0A0A0A" />
+    <meta name="theme-color" content="#F9FAFB" />
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
     <meta
       property="og:title"
-      content="Samuel Landry Woulle Ndedy — Développeur Mobile & Fullstack (Flutter • React)"
+      content="Samuel Landry Woulle Ndedy — Développeur Mobile, Web & Designer UI/UX"
     />
     <meta
       property="og:description"
-      content="Titulaire d'un cursus Master en Génie Logiciel, je conçois et développe des applications mobiles et web performantes, de la maquette Figma jusqu'au déploiement backend."
+      content="Je conçois et développe des applications mobiles et des sites web simples, beaux et efficaces — de la maquette Figma jusqu'à la mise en ligne."
     />
-    <meta property="og:site_name" content="Samuel.dev" />
+    <meta property="og:site_name" content="Samuel Ndedy.dev" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Samuel Landry Woulle Ndedy — Développeur Mobile & Fullstack"
+      content="Samuel Landry Woulle Ndedy — Développeur Mobile, Web & Designer UI/UX"
     />
     <meta
       name="twitter:description"
-      content="Développeur Mobile & Fullstack (Flutter • React) & UI/UX Designer basé à Douala, Cameroun."
+      content="Création d'applications mobiles (Flutter, React) et design UI/UX à Douala et à distance."
     />
 
     <!-- Structured Data (JSON-LD) -->
@@ -68,7 +68,7 @@
           },
           {
             "@type": "WebSite",
-            "name": "Samuel.dev — Portfolio",
+            "name": "Samuel Ndedy.dev — Portfolio",
             "inLanguage": "fr-FR"
           }
         ]
@@ -83,26 +83,23 @@
       rel="stylesheet"
     />
 
-    <!-- Prevent theme flash (Dark Mode by default) -->
+    <!-- Light Mode by default (remembers user choice without flash) -->
     <script>
       (function () {
         try {
           var stored = localStorage.getItem('theme');
-          if (stored === 'light') {
-            document.documentElement.classList.remove('dark');
-          } else {
+          if (stored === 'dark') {
             document.documentElement.classList.add('dark');
-          }
-          if (localStorage.getItem('blueprint') === '1') {
-            document.documentElement.setAttribute('data-blueprint', 'true');
+          } else {
+            document.documentElement.classList.remove('dark');
           }
         } catch (e) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('dark');
         }
       })();
     </script>
   </head>
-  <body class="bg-canvas-light text-slate-900 dark:bg-canvas-dark dark:text-slate-100 antialiased selection:bg-primary/25 selection:text-primary-ink dark:selection:text-primary">
+  <body class="bg-canvas-light text-ink dark:bg-canvas-dark dark:text-slate-100 antialiased selection:bg-primary/30 selection:text-ink dark:selection:text-primary">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

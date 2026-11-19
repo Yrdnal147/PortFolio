@@ -1,27 +1,21 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Download, Grid2x2 } from 'lucide-react';
+import { Menu, X, Sun, Moon, Download, MessageCircle } from 'lucide-react';
 import { personalInfo, navLinks } from '../data/portfolioData';
 
-export default function Navbar({
-  theme,
-  toggleTheme,
-  blueprint,
-  toggleBlueprint,
-  activeSection,
-}) {
+export default function Navbar({ theme, toggleTheme, activeSection }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 14);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768) setMobileOpen(false);
+      if (window.innerWidth >= 1024) setMobileOpen(false);
     };
     const onKeyDown = (e) => {
       if (e.key === 'Escape') setMobileOpen(false);
@@ -35,28 +29,30 @@ export default function Navbar({
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full px-3 pt-3 sm:px-6">
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-200 ${
+        scrolled
+          ? 'border-b border-slate-200/90 bg-white/95 shadow-soft backdrop-blur-md dark:border-secondary/45 dark:bg-canvas-dark/95'
+          : 'border-b border-slate-200/60 bg-canvas-light/90 backdrop-blur-sm dark:border-secondary/30 dark:bg-canvas-dark/90'
+      }`}
+    >
       <nav
         aria-label="Navigation principale"
-        className={`mx-auto flex h-14 max-w-5xl items-center justify-between rounded-2xl border px-4 transition-all duration-200 sm:px-5 ${
-          scrolled
-            ? 'border-secondary/20 bg-canvas-light/85 shadow-lg shadow-black/5 backdrop-blur-xl dark:border-secondary/60 dark:bg-[#0D0F14]/85 dark:shadow-black/40'
-            : 'border-secondary/15 bg-canvas-light/70 backdrop-blur-md dark:border-secondary/40 dark:bg-canvas-dark/70'
-        }`}
+        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-[4.5rem] sm:px-6"
       >
-        {/* Minimalist brand logo */}
+        {/* Brand name: Samuel Ndedy.dev */}
         <a
-          href="#"
-          className="group flex items-center gap-1 rounded-md font-mono text-sm font-semibold tracking-tight text-slate-900 dark:text-white sm:text-base"
+          href="#hero"
+          className="group inline-flex items-baseline rounded-lg py-1 text-base font-extrabold tracking-tight text-ink dark:text-white sm:text-lg"
         >
-          <span>Samuel</span>
-          <span className="text-primary-ink transition-transform duration-200 group-hover:translate-x-0.5 dark:text-primary">
-            .dev
+          <span>{personalInfo.brandFirst}</span>
+          <span className="font-mono text-primary-ink transition-colors dark:text-primary">
+            {personalInfo.brandSuffix}
           </span>
         </a>
 
-        {/* Centered floating notch links on desktop */}
-        <ul className="hidden items-center gap-1 rounded-xl border border-secondary/15 bg-secondary/[0.06] p-1 dark:border-secondary/40 dark:bg-secondary/20 md:flex">
+        {/* Desktop simple French links */}
+        <ul className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -64,50 +60,21 @@ export default function Navbar({
                 <a
                   href={link.href}
                   aria-current={isActive ? 'location' : undefined}
-                  className={`relative inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                  className={`inline-flex min-h-[40px] items-center rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors ${
                     isActive
-                      ? 'text-slate-900 dark:text-white'
-                      : 'text-secondary hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                      ? 'bg-primary-soft text-primary-ink dark:bg-primary/15 dark:text-primary'
+                      : 'text-secondary hover:bg-slate-100 hover:text-ink dark:text-slate-300 dark:hover:bg-secondary/35 dark:hover:text-white'
                   }`}
                 >
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-active-pill"
-                      transition={{ type: 'spring', stiffness: 420, damping: 32 }}
-                      className="absolute inset-0 rounded-lg bg-white shadow-sm ring-1 ring-secondary/15 dark:bg-secondary/60 dark:ring-primary/30"
-                    />
-                  )}
-                  <span className="relative z-10 font-mono text-[10px] font-semibold text-primary-ink dark:text-primary">
-                    {link.code}
-                  </span>
-                  <span className="relative z-10">{link.label}</span>
+                  {link.label}
                 </a>
               </li>
             );
           })}
         </ul>
 
-        {/* Desktop utility actions */}
-        <div className="hidden items-center gap-2 md:flex">
-          <button
-            type="button"
-            onClick={toggleBlueprint}
-            aria-pressed={blueprint}
-            title={
-              blueprint
-                ? 'Désactiver le mode Blueprint'
-                : 'Activer le mode Blueprint (grille technique)'
-            }
-            aria-label="Mode Blueprint"
-            className={`inline-flex h-8 w-8 items-center justify-center rounded-lg border transition-colors ${
-              blueprint
-                ? 'border-primary/60 bg-primary/15 text-primary-ink dark:text-primary'
-                : 'border-secondary/20 bg-white/80 text-secondary hover:border-primary/50 hover:text-primary-ink dark:border-secondary/50 dark:bg-surface-dark/80 dark:text-slate-400 dark:hover:border-primary/50 dark:hover:text-primary'
-            }`}
-          >
-            <Grid2x2 className="h-3.5 w-3.5" aria-hidden="true" />
-          </button>
-
+        {/* Desktop clear actions */}
+        <div className="hidden items-center gap-2.5 lg:flex">
           <button
             type="button"
             onClick={toggleTheme}
@@ -122,41 +89,34 @@ export default function Navbar({
                 ? 'Passer en mode clair'
                 : 'Passer en mode sombre'
             }
-            className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-secondary/20 bg-white/80 text-secondary transition-colors hover:border-primary/50 hover:text-primary-ink dark:border-secondary/50 dark:bg-surface-dark/80 dark:text-slate-300 dark:hover:border-primary/50 dark:hover:text-primary"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-secondary transition-colors hover:border-secondary/40 hover:text-ink dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-200 dark:hover:border-primary/50 dark:hover:text-primary"
           >
             {theme === 'dark' ? (
-              <Sun className="h-3.5 w-3.5" aria-hidden="true" />
+              <Sun className="h-4 w-4" aria-hidden="true" />
             ) : (
-              <Moon className="h-3.5 w-3.5" aria-hidden="true" />
+              <Moon className="h-4 w-4" aria-hidden="true" />
             )}
           </button>
 
           <a
             href={personalInfo.cvPath}
             download
-            className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-primary-on shadow-sm shadow-primary/25 transition-all hover:bg-primary-hover active:scale-[0.98]"
+            className="inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm font-semibold text-ink transition-colors hover:border-secondary/40 hover:bg-slate-50 dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-100 dark:hover:border-primary/40 dark:hover:bg-secondary/35"
           >
-            <Download className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>Télécharger mon CV</span>
+            <Download className="h-4 w-4 text-secondary dark:text-slate-300" aria-hidden="true" />
+            <span>Mon CV</span>
+          </a>
+
+          <a
+            href="#contact"
+            className="inline-flex min-h-[40px] items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-bold text-primary-on shadow-sm shadow-primary/25 transition-all hover:bg-primary-hover active:scale-[0.98]"
+          >
+            <span>Me contacter</span>
           </a>
         </div>
 
-        {/* Mobile controls */}
-        <div className="flex items-center gap-1.5 md:hidden">
-          <button
-            type="button"
-            onClick={toggleBlueprint}
-            aria-pressed={blueprint}
-            aria-label="Mode Blueprint"
-            className={`inline-flex h-8 w-8 items-center justify-center rounded-lg border ${
-              blueprint
-                ? 'border-primary/60 bg-primary/15 text-primary-ink dark:text-primary'
-                : 'border-secondary/20 bg-white text-secondary dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-400'
-            }`}
-          >
-            <Grid2x2 className="h-3.5 w-3.5" aria-hidden="true" />
-          </button>
-
+        {/* Mobile controls (large touch targets >= 44px) */}
+        <div className="flex items-center gap-2 lg:hidden">
           <button
             type="button"
             onClick={toggleTheme}
@@ -166,12 +126,12 @@ export default function Navbar({
                 ? 'Passer en mode clair'
                 : 'Passer en mode sombre'
             }
-            className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-secondary/20 bg-white text-secondary dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-300"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-secondary dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-200"
           >
             {theme === 'dark' ? (
-              <Sun className="h-3.5 w-3.5" aria-hidden="true" />
+              <Sun className="h-5 w-5" aria-hidden="true" />
             ) : (
-              <Moon className="h-3.5 w-3.5" aria-hidden="true" />
+              <Moon className="h-5 w-5" aria-hidden="true" />
             )}
           </button>
 
@@ -181,62 +141,74 @@ export default function Navbar({
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav-menu"
             aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-secondary/20 bg-white text-secondary dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-300"
+            className="inline-flex h-11 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 text-sm font-semibold text-ink dark:border-secondary/50 dark:bg-surface-dark dark:text-white"
           >
             {mobileOpen ? (
-              <X className="h-4 w-4" aria-hidden="true" />
+              <>
+                <X className="h-5 w-5" aria-hidden="true" />
+                <span>Fermer</span>
+              </>
             ) : (
-              <Menu className="h-4 w-4" aria-hidden="true" />
+              <>
+                <Menu className="h-5 w-5" aria-hidden="true" />
+                <span>Menu</span>
+              </>
             )}
           </button>
         </div>
       </nav>
 
-      {/* Mobile menu dropdown */}
+      {/* Mobile simple, touch-friendly menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             id="mobile-nav-menu"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="mx-auto mt-2 max-w-5xl rounded-2xl border border-secondary/20 bg-canvas-light/95 p-3 shadow-xl backdrop-blur-xl dark:border-secondary/60 dark:bg-[#0D0F14]/95 md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden border-t border-slate-200 bg-white dark:border-secondary/40 dark:bg-surface-dark lg:hidden"
           >
-            <ul className="flex flex-col gap-1">
+            <div className="mx-auto flex max-w-6xl flex-col gap-1.5 px-4 py-4 sm:px-6">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.id;
                 return (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      aria-current={isActive ? 'location' : undefined}
-                      onClick={() => setMobileOpen(false)}
-                      className={`flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
-                        isActive
-                          ? 'bg-primary/15 text-primary-ink dark:text-primary'
-                          : 'text-secondary hover:bg-secondary/10 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-secondary/30 dark:hover:text-white'
-                      }`}
-                    >
-                      <span>{link.label}</span>
-                      <span className="font-mono text-xs opacity-70">
-                        {link.code}
-                      </span>
-                    </a>
-                  </li>
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    aria-current={isActive ? 'location' : undefined}
+                    onClick={() => setMobileOpen(false)}
+                    className={`flex min-h-[48px] items-center rounded-xl px-4 text-base font-semibold transition-colors ${
+                      isActive
+                        ? 'bg-primary-soft text-primary-ink dark:bg-primary/15 dark:text-primary'
+                        : 'text-ink hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-secondary/30'
+                    }`}
+                  >
+                    {link.label}
+                  </a>
                 );
               })}
-            </ul>
-            <div className="mt-2.5 border-t border-secondary/15 pt-2.5 dark:border-secondary/40">
-              <a
-                href={personalInfo.cvPath}
-                download
-                onClick={() => setMobileOpen(false)}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-on transition-colors hover:bg-primary-hover"
-              >
-                <Download className="h-4 w-4" aria-hidden="true" />
-                <span>Télécharger mon CV</span>
-              </a>
+
+              <div className="mt-3 grid grid-cols-1 gap-2.5 border-t border-slate-200 pt-4 dark:border-secondary/40 sm:grid-cols-2">
+                <a
+                  href={personalInfo.cvPath}
+                  download
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-secondary/25 bg-slate-50 px-4 text-sm font-bold text-ink dark:border-secondary/60 dark:bg-secondary/30 dark:text-white"
+                >
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  <span>Télécharger mon CV</span>
+                </a>
+
+                <a
+                  href="#contact"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-bold text-primary-on"
+                >
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  <span>Me contacter</span>
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

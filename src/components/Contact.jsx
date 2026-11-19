@@ -7,7 +7,9 @@ import {
   MessageCircle,
   Github,
   Linkedin,
+  Download,
   ArrowUpRight,
+  Clock,
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
@@ -26,170 +28,204 @@ export default function Contact({ onNotify }) {
       document.body.removeChild(textArea);
     }
     setCopied(true);
-    onNotify?.('Adresse email copiée dans le presse-papiers !');
-    window.setTimeout(() => setCopied(false), 2200);
+    onNotify?.('Adresse email copiée !');
+    window.setTimeout(() => setCopied(false), 2400);
   };
 
   return (
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="py-20 sm:py-24"
+      className="bg-canvas-light py-20 dark:bg-canvas-dark sm:py-24"
     >
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
-          data-bp-box
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.45 }}
-          className="relative overflow-hidden rounded-3xl border border-secondary/20 bg-white p-7 dark:border-secondary/50 dark:bg-surface-dark/85 sm:p-10"
+          transition={{ duration: 0.4 }}
+          className="mx-auto max-w-2xl text-center"
         >
-          {/* Subtle top-right primary glow */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-primary/15 blur-[100px]"
-          />
+          <span className="inline-block rounded-full bg-primary-soft px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-ink dark:bg-primary/15 dark:text-primary">
+            Me contacter simplement
+          </span>
+          <h2
+            id="contact-heading"
+            className="mt-3 text-2xl font-extrabold tracking-tight text-ink dark:text-white sm:text-4xl"
+          >
+            Parlons de votre projet ou de votre opportunité
+          </h2>
+          <p className="mt-3 text-base leading-relaxed text-secondary dark:text-slate-300">
+            Choisissez le moyen qui vous convient le mieux — pas de formulaire
+            compliqué, vous me contactez directement.
+          </p>
+          <p className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-ink dark:text-primary">
+            <Clock className="h-4 w-4" aria-hidden="true" />
+            <span>
+              {personalInfo.responseTime} · {personalInfo.location} &amp; à
+              distance
+            </span>
+          </p>
+        </motion.div>
 
-          <div className="relative">
-            <div className="flex items-center gap-2.5">
-              <span className="rounded-md bg-primary/15 px-2 py-0.5 font-mono text-xs font-semibold text-primary-ink dark:text-primary">
-                [C]
-              </span>
-              <span className="font-mono text-xs font-medium uppercase tracking-widest text-secondary dark:text-slate-400">
-                05 / Contact
+        {/* 3 ultra-clear action cards (WhatsApp, Email, CV & Réseaux) */}
+        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {/* Card 1: WhatsApp (Fastest & most approachable) */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4 }}
+            className="flex flex-col rounded-3xl border-2 border-primary bg-white p-7 shadow-card dark:bg-surface-dark"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-on">
+                <MessageCircle className="h-6 w-6" aria-hidden="true" />
+              </div>
+              <span className="rounded-full bg-primary-soft px-3 py-1 text-xs font-bold text-primary-ink dark:bg-primary/15 dark:text-primary">
+                Le plus rapide
               </span>
             </div>
 
-            <h2
-              id="contact-heading"
-              className="mt-2.5 max-w-2xl text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl"
-            >
-              Un projet, une opportunité en React/React Native ou Flutter ?
-              Discutons-en.
-            </h2>
-            <p className="mt-3 max-w-xl text-sm text-secondary dark:text-slate-400 sm:text-base">
-              Réponse rapide par email ou WhatsApp — aucun formulaire lourd,
-              accès direct. Disponible à Douala et en remote.
+            <h3 className="mt-5 text-xl font-extrabold text-ink dark:text-white">
+              Écrire sur WhatsApp
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-secondary dark:text-slate-300">
+              Idéal pour poser une question rapide, présenter une idée ou fixer
+              un appel.
+            </p>
+            <p className="mt-4 font-mono text-sm font-bold text-ink dark:text-white">
+              {personalInfo.phoneDisplay}
             </p>
 
-            {/* Primary Email + Copy Row */}
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href={personalInfo.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-auto inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-2xl bg-primary px-5 py-3 text-sm font-bold text-primary-on shadow-sm shadow-primary/25 transition-all hover:bg-primary-hover active:scale-[0.98]"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              <span>Envoyer un message WhatsApp</span>
+            </a>
+          </motion.div>
+
+          {/* Card 2: Email + 1-click copy */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.06 }}
+            className="flex flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-soft dark:border-secondary/50 dark:bg-surface-dark"
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-white">
+              <Mail className="h-6 w-6" aria-hidden="true" />
+            </div>
+
+            <h3 className="mt-5 text-xl font-extrabold text-ink dark:text-white">
+              Envoyer un email
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-secondary dark:text-slate-300">
+              Pratique pour m’envoyer une fiche de poste, un cahier des charges
+              ou proposer un entretien.
+            </p>
+            <p className="mt-4 break-all font-mono text-sm font-bold text-ink dark:text-white">
+              {personalInfo.email}
+            </p>
+
+            <div className="mt-auto flex flex-col gap-2.5 pt-6">
               <a
                 href={`mailto:${personalInfo.email}`}
-                onContextMenu={(e) => {
-                  e.preventDefault();
-                  handleCopyEmail();
-                }}
-                title="Envoyer un email (clic droit pour copier)"
-                className="inline-flex items-center gap-2.5 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-primary-on shadow-sm shadow-primary/25 transition-all hover:bg-primary-hover active:scale-[0.98]"
+                className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-2xl bg-secondary px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-secondary-light active:scale-[0.98]"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
-                <span>{personalInfo.email}</span>
+                <span>Ouvrir ma messagerie</span>
               </a>
 
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className={`inline-flex items-center gap-2 rounded-xl border px-4 py-3 text-sm font-semibold transition-all active:scale-[0.98] ${
+                className={`inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-2xl border px-4 py-2 text-sm font-bold transition-all ${
                   copied
-                    ? 'border-primary/60 bg-primary/15 text-primary-ink dark:text-primary'
-                    : 'border-secondary/30 bg-secondary/10 text-slate-900 hover:border-secondary/50 hover:bg-secondary/15 dark:border-secondary dark:bg-secondary/35 dark:text-slate-100 dark:hover:border-primary/45 dark:hover:bg-secondary/55'
+                    ? 'border-primary bg-primary-soft text-primary-ink dark:bg-primary/15 dark:text-primary'
+                    : 'border-slate-200 bg-canvas-light text-ink hover:border-secondary/40 dark:border-secondary/55 dark:bg-canvas-dark dark:text-slate-200'
                 }`}
               >
                 {copied ? (
                   <>
                     <Check className="h-4 w-4" aria-hidden="true" />
-                    <span>Copié !</span>
+                    <span>Adresse copiée !</span>
                   </>
                 ) : (
                   <>
                     <Copy className="h-4 w-4" aria-hidden="true" />
-                    <span>Copier l’email</span>
+                    <span>Copier l’adresse email</span>
                   </>
                 )}
               </button>
             </div>
+          </motion.div>
 
-            {/* Direct Channels Grid */}
-            <div className="mt-8 grid grid-cols-1 gap-3.5 border-t border-secondary/15 pt-7 dark:border-secondary/40 sm:grid-cols-3">
-              <a
-                href={personalInfo.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between rounded-xl border border-secondary/20 bg-secondary/[0.04] p-4 transition-colors hover:border-primary/50 dark:border-secondary/45 dark:bg-secondary/20 dark:hover:border-primary/50"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary-ink dark:text-primary">
-                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-secondary dark:text-slate-400">
-                      WhatsApp / Tél.
-                    </p>
-                    <p className="font-mono text-xs font-semibold text-slate-900 dark:text-white">
-                      {personalInfo.phoneDisplay}
-                    </p>
-                  </div>
-                </div>
-                <ArrowUpRight
-                  className="h-4 w-4 text-secondary/70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-ink dark:text-slate-400 dark:group-hover:text-primary"
-                  aria-hidden="true"
-                />
-              </a>
+          {/* Card 3: CV & Professional Profiles */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.12 }}
+            className="flex flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-soft dark:border-secondary/50 dark:bg-surface-dark"
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-ink dark:bg-secondary/50 dark:text-white">
+              <Download className="h-6 w-6" aria-hidden="true" />
+            </div>
 
+            <h3 className="mt-5 text-xl font-extrabold text-ink dark:text-white">
+              CV &amp; Profils en ligne
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-secondary dark:text-slate-300">
+              Téléchargez mon CV complet en PDF ou retrouvez mes profils
+              professionnels.
+            </p>
+
+            <div className="mt-auto flex flex-col gap-2.5 pt-6">
               <a
-                href={personalInfo.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between rounded-xl border border-secondary/20 bg-secondary/[0.04] p-4 transition-colors hover:border-primary/50 dark:border-secondary/45 dark:bg-secondary/20 dark:hover:border-primary/50"
+                href={personalInfo.cvPath}
+                download
+                className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-canvas-light px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:border-primary hover:bg-primary-soft/60 dark:border-secondary/55 dark:bg-canvas-dark dark:text-white dark:hover:border-primary"
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-secondary/15 text-secondary dark:bg-secondary/60 dark:text-white">
-                    <Github className="h-4 w-4" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-secondary dark:text-slate-400">
-                      GitHub
-                    </p>
-                    <p className="font-mono text-xs font-semibold text-slate-900 dark:text-white">
-                      {personalInfo.githubHandle}
-                    </p>
-                  </div>
-                </div>
-                <ArrowUpRight
-                  className="h-4 w-4 text-secondary/70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-ink dark:text-slate-400 dark:group-hover:text-primary"
-                  aria-hidden="true"
-                />
+                <Download className="h-4 w-4" aria-hidden="true" />
+                <span>Télécharger mon CV (PDF)</span>
               </a>
 
               <a
                 href={personalInfo.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between rounded-xl border border-secondary/20 bg-secondary/[0.04] p-4 transition-colors hover:border-primary/50 dark:border-secondary/45 dark:bg-secondary/20 dark:hover:border-primary/50"
+                className="inline-flex min-h-[44px] w-full items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-ink transition-colors hover:border-primary/50 dark:border-secondary/55 dark:bg-canvas-dark dark:text-slate-200"
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary-ink dark:text-primary">
-                    <Linkedin className="h-4 w-4" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-secondary dark:text-slate-400">
-                      LinkedIn
-                    </p>
-                    <p className="font-mono text-xs font-semibold text-slate-900 dark:text-white">
-                      {personalInfo.linkedinName}
-                    </p>
-                  </div>
-                </div>
-                <ArrowUpRight
-                  className="h-4 w-4 text-secondary/70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-ink dark:text-slate-400 dark:group-hover:text-primary"
-                  aria-hidden="true"
-                />
+                <span className="inline-flex items-center gap-2.5">
+                  <Linkedin
+                    className="h-4 w-4 text-primary-ink dark:text-primary"
+                    aria-hidden="true"
+                  />
+                  <span>LinkedIn — {personalInfo.linkedinName}</span>
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-secondary" aria-hidden="true" />
+              </a>
+
+              <a
+                href={personalInfo.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] w-full items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-ink transition-colors hover:border-primary/50 dark:border-secondary/55 dark:bg-canvas-dark dark:text-slate-200"
+              >
+                <span className="inline-flex items-center gap-2.5">
+                  <Github className="h-4 w-4 text-secondary dark:text-slate-300" aria-hidden="true" />
+                  <span>GitHub — {personalInfo.githubHandle}</span>
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-secondary" aria-hidden="true" />
               </a>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

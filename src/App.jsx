@@ -9,40 +9,15 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import {
-  navLinks,
-  projectCategories,
-  projectTechFilters,
-} from './data/portfolioData';
-
-function getInitialFilters() {
-  try {
-    const params = new URLSearchParams(window.location.search);
-    const cat = params.get('cat');
-    const tech = params.get('tech');
-    return {
-      category: projectCategories.includes(cat) ? cat : 'Tous',
-      tech: projectTechFilters.includes(tech) ? tech : null,
-    };
-  } catch {
-    return { category: 'Tous', tech: null };
-  }
-}
+import { navLinks } from './data/portfolioData';
 
 export default function App() {
+  // Light mode by default (user-validated choice)
   const [theme, setTheme] = useState(() => {
     try {
-      return localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+      return localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
     } catch {
-      return 'dark';
-    }
-  });
-
-  const [blueprint, setBlueprint] = useState(() => {
-    try {
-      return localStorage.getItem('blueprint') === '1';
-    } catch {
-      return false;
+      return 'light';
     }
   });
 
@@ -57,12 +32,10 @@ export default function App() {
     }
   });
 
-  const [activeSection, setActiveSection] = useState('projects');
-  const [filters, setFilters] = useState(getInitialFilters);
+  const [activeSection, setActiveSection] = useState('hero');
   const [toast, setToast] = useState(null);
   const toastTimerRef = useRef(null);
 
-  // Sync dark mode class
   useEffect(() => {
     const root = document.documentElement;
     if (theme === 'dark') {
@@ -77,22 +50,6 @@ export default function App() {
     }
   }, [theme]);
 
-  // Sync blueprint mode attribute
-  useEffect(() => {
-    const root = document.documentElement;
-    if (blueprint) {
-      root.setAttribute('data-blueprint', 'true');
-    } else {
-      root.removeAttribute('data-blueprint');
-    }
-    try {
-      localStorage.setItem('blueprint', blueprint ? '1' : '0');
-    } catch {
-      // ignore storage errors
-    }
-  }, [blueprint]);
-
-  // Sync reduced-motion attribute
   useEffect(() => {
     const root = document.documentElement;
     if (reducedMotion) {
@@ -107,27 +64,6 @@ export default function App() {
     }
   }, [reducedMotion]);
 
-  // Sync project filter query params in URL cleanly (inspired by rmichels.com)
-  useEffect(() => {
-    try {
-      const url = new URL(window.location.href);
-      if (filters.category !== 'Tous') {
-        url.searchParams.set('cat', filters.category);
-      } else {
-        url.searchParams.delete('cat');
-      }
-      if (filters.tech) {
-        url.searchParams.set('tech', filters.tech);
-      } else {
-        url.searchParams.delete('tech');
-      }
-      window.history.replaceState({}, '', url.toString());
-    } catch {
-      // ignore history errors
-    }
-  }, [filters]);
-
-  // Track active section in viewport for floating notch Navbar
   useEffect(() => {
     const ids = navLinks.map((l) => l.id);
     const elements = ids
@@ -144,7 +80,7 @@ export default function App() {
           setActiveSection(visible[0].target.id);
         }
       },
-      { rootMargin: '-25% 0px -55% 0px', threshold: [0.1, 0.35, 0.6] }
+      { rootMargin: '-20% 0px -55% 0px', threshold: [0.1, 0.35, 0.6] }
     );
 
     elements.forEach((el) => observer.observe(el));
@@ -157,24 +93,10 @@ export default function App() {
     toastTimerRef.current = window.setTimeout(() => setToast(null), 2400);
   }, []);
 
-  const handleCategoryChange = (category) =>
-    setFilters((prev) => ({ ...prev, category }));
-
-  const handleTechChange = (tech) =>
-    setFilters((prev) => ({ ...prev, tech }));
-
-  const handleQuickFilterCategory = (category) =>
-    setFilters({ category, tech: null });
-
-  const handleFilterByTechFromSkills = (tech) =>
-    setFilters({ category: 'Tous', tech });
-
-  const handleResetFilters = () => setFilters({ category: 'Tous', tech: null });
-
   return (
     <MotionConfig reducedMotion={reducedMotion ? 'always' : 'user'}>
-      <div className="min-h-screen bg-canvas-light text-slate-900 transition-colors duration-200 dark:bg-canvas-dark dark:text-slate-100">
-        {/* Skip to content link (keyboard & screen reader accessibility) */}
+      <div className="min-h-screen bg-canvas-light text-ink transition-colors duration-200 dark:bg-canvas-dark dark:text-slate-100">
+        {/* Skip to content link for keyboard and screen-reader users */}
         <a href="#main-content" className="skip-link">
           Aller au contenu principal
         </a>
@@ -184,28 +106,13 @@ export default function App() {
           toggleTheme={() =>
             setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
           }
-          blueprint={blueprint}
-          toggleBlueprint={() => setBlueprint((prev) => !prev)}
           activeSection={activeSection}
         />
 
         <main id="main-content" tabIndex={-1} className="focus:outline-none">
-          <Hero
-            reducedMotion={reducedMotion}
-            onQuickFilterCategory={handleQuickFilterCategory}
-          />
-          <Projects
-            activeCategory={filters.category}
-            activeTech={filters.tech}
-            onCategoryChange={handleCategoryChange}
-            onTechChange={handleTechChange}
-            onResetFilters={handleResetFilters}
-            onNotify={notify}
-          />
-          <Skills
-            onFilterByTech={handleFilterByTechFromSkills}
-            reducedMotion={reducedMotion}
-          />
+          <Hero reducedMotion={reducedMotion} />
+          <Projects />
+          <Skills />
           <Experience />
           <Education />
           <Contact onNotify={notify} />
@@ -214,11 +121,9 @@ export default function App() {
         <Footer
           reducedMotion={reducedMotion}
           toggleReducedMotion={() => setReducedMotion((prev) => !prev)}
-          blueprint={blueprint}
-          toggleBlueprint={() => setBlueprint((prev) => !prev)}
         />
 
-        {/* Global accessible toast notification (inspired by rmichels.com) */}
+        {/* Accessible confirmation toast */}
         <div
           role="status"
           aria-live="polite"
@@ -231,12 +136,9 @@ export default function App() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.96 }}
                 transition={{ duration: 0.18 }}
-                className="inline-flex items-center gap-2 rounded-xl border border-primary/40 bg-secondary-dark/95 px-4 py-2.5 font-mono text-xs font-medium text-white shadow-xl backdrop-blur-md dark:border-primary/40 dark:bg-surface-dark"
+                className="inline-flex items-center gap-2 rounded-2xl border border-primary/50 bg-ink px-4 py-3 text-sm font-semibold text-white shadow-xl"
               >
-                <Check
-                  className="h-3.5 w-3.5 text-primary"
-                  aria-hidden="true"
-                />
+                <Check className="h-4 w-4 text-primary" aria-hidden="true" />
                 <span>{toast}</span>
               </motion.div>
             )}

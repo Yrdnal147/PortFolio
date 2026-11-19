@@ -1,447 +1,113 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Briefcase,
-  MapPin,
-  ChevronLeft,
-  ChevronRight,
-  List,
-  SlidersHorizontal,
-  CheckCircle2,
-} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Briefcase, MapPin, GraduationCap } from 'lucide-react';
 import { experiences } from '../data/portfolioData';
 
 export default function Experience() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [viewMode, setViewMode] = useState('interactive'); // 'interactive' | 'timeline'
-
-  const activeExp = experiences[selectedIndex];
-  const progressPercent =
-    experiences.length > 1
-      ? (selectedIndex / (experiences.length - 1)) * 100
-      : 0;
-
-  const handleScrubberKeyDown = (e) => {
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      setSelectedIndex((prev) => Math.min(experiences.length - 1, prev + 1));
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      setSelectedIndex((prev) => Math.max(0, prev - 1));
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      setSelectedIndex(0);
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      setSelectedIndex(experiences.length - 1);
-    }
-  };
-
   return (
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="border-b border-secondary/15 py-20 dark:border-secondary/40 sm:py-24"
+      className="border-b border-slate-200/80 bg-canvas-light py-20 dark:border-secondary/35 dark:bg-canvas-dark sm:py-24"
     >
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        {/* Header + View Mode Toggle */}
-        <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Header + quick link to Education */}
+        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.4 }}
+            className="max-w-2xl"
           >
-            <div className="flex items-center gap-2.5">
-              <span className="rounded-md bg-primary/15 px-2 py-0.5 font-mono text-xs font-semibold text-primary-ink dark:text-primary">
-                [E]
-              </span>
-              <span className="font-mono text-xs font-medium uppercase tracking-widest text-secondary dark:text-slate-400">
-                03 / Parcours professionnel
-              </span>
-              <span className="font-mono text-xs text-secondary/70 dark:text-slate-500">
-                — 01 à 0{experiences.length}
-              </span>
-            </div>
+            <span className="inline-block rounded-full bg-primary-soft px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-ink dark:bg-primary/15 dark:text-primary">
+              Parcours professionnel
+            </span>
             <h2
               id="experience-heading"
-              className="mt-2.5 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl"
+              className="mt-3 text-2xl font-extrabold tracking-tight text-ink dark:text-white sm:text-3xl"
             >
-              Expériences professionnelles
+              Mes expériences sur le terrain
             </h2>
-            <p className="mt-2 max-w-xl text-sm text-secondary dark:text-slate-400 sm:text-base">
-              Navigue étape par étape sur la frise interactive ou affiche la
-              chronologie complète pour une lecture rapide.
+            <p className="mt-3 text-base leading-relaxed text-secondary dark:text-slate-300">
+              Du plus récent au plus ancien, les entreprises et équipes avec
+              lesquelles j’ai construit des applications web et mobiles à
+              Douala.
             </p>
           </motion.div>
 
-          {/* Accessible View Switcher */}
-          <div
-            role="group"
-            aria-label="Mode d'affichage du parcours"
-            className="inline-flex items-center gap-1 self-start rounded-xl border border-secondary/20 bg-white p-1 dark:border-secondary/50 dark:bg-surface-dark/80 md:self-auto"
+          <a
+            href="#education"
+            className="inline-flex min-h-[44px] items-center gap-2 self-start rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold text-ink shadow-soft transition-colors hover:border-primary/50 hover:text-primary-ink dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-200 dark:hover:text-primary md:self-auto"
           >
-            <button
-              type="button"
-              aria-pressed={viewMode === 'interactive'}
-              onClick={() => setViewMode('interactive')}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-mono text-xs font-semibold transition-all ${
-                viewMode === 'interactive'
-                  ? 'bg-primary text-primary-on shadow-sm shadow-primary/25'
-                  : 'text-secondary hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
-              }`}
-            >
-              <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>Frise interactive</span>
-            </button>
-
-            <button
-              type="button"
-              aria-pressed={viewMode === 'timeline'}
-              onClick={() => setViewMode('timeline')}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-mono text-xs font-semibold transition-all ${
-                viewMode === 'timeline'
-                  ? 'bg-primary text-primary-on shadow-sm shadow-primary/25'
-                  : 'text-secondary hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
-              }`}
-            >
-              <List className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>Vue complète</span>
-            </button>
-          </div>
+            <GraduationCap className="h-4 w-4 text-primary-ink dark:text-primary" aria-hidden="true" />
+            <span>Voir aussi mes diplômes</span>
+          </a>
         </div>
 
-        {/* MODE 1: Interactive Scrubber + Stamp Deck + Detail Dossier */}
-        {viewMode === 'interactive' ? (
-          <div className="space-y-6">
-            <div
-              data-bp-box
-              className="rounded-2xl border border-secondary/20 bg-white p-5 dark:border-secondary/50 dark:bg-surface-dark/80 sm:p-6"
+        {/* Clean, directly readable vertical list — zero hidden clicks */}
+        <div className="mt-12 space-y-5">
+          {experiences.map((exp, index) => (
+            <motion.article
+              key={exp.id}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.35, delay: index * 0.05 }}
+              className="grid grid-cols-1 gap-4 rounded-3xl border border-slate-200/90 bg-white p-6 shadow-soft transition-colors hover:border-primary/50 dark:border-secondary/45 dark:bg-surface-dark sm:p-7 md:grid-cols-12 md:gap-6"
             >
-              <div className="mb-3 flex items-center justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-secondary dark:text-slate-400">
-                  Chronologie : Actuel → 2021
-                </span>
-                <span className="hidden font-mono text-[11px] text-secondary/70 dark:text-slate-500 sm:inline">
-                  Touches ← / → pour naviguer
-                </span>
-              </div>
+              {/* Left: Period & status (super scannable) */}
+              <div className="flex flex-row flex-wrap items-center justify-between gap-2 md:col-span-3 md:flex-col md:items-start md:justify-start md:border-r md:border-slate-200/80 md:pr-5 dark:md:border-secondary/40">
+                <p className="font-mono text-sm font-bold text-ink dark:text-white">
+                  {exp.period}
+                </p>
 
-              {/* Scrubber rail */}
-              <div
-                role="tablist"
-                aria-label="Sélectionner une expérience sur la frise chronologique"
-                onKeyDown={handleScrubberKeyDown}
-                className="relative pb-2 pt-3"
-              >
-                {/* Base line */}
-                <div
-                  aria-hidden="true"
-                  className="absolute left-4 right-4 top-[1.35rem] h-0.5 rounded-full bg-secondary/20 dark:bg-secondary/60"
-                />
-                {/* Active fill (#04E762) */}
-                <div
-                  aria-hidden="true"
-                  style={{ width: `calc(${progressPercent}% - 0px)` }}
-                  className="absolute left-4 top-[1.35rem] h-0.5 max-w-[calc(100%-2rem)] rounded-full bg-primary transition-all duration-300"
-                />
-
-                <div className="relative grid grid-cols-5 gap-1">
-                  {experiences.map((exp, idx) => {
-                    const isSelected = idx === selectedIndex;
-                    const isPassed = idx <= selectedIndex;
-                    return (
-                      <button
-                        key={exp.id}
-                        type="button"
-                        role="tab"
-                        id={`exp-tab-${exp.id}`}
-                        aria-selected={isSelected}
-                        aria-controls={`exp-panel-${exp.id}`}
-                        onClick={() => setSelectedIndex(idx)}
-                        className="group flex flex-col items-center text-center focus:outline-none"
-                      >
-                        <span
-                          className={`relative z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 transition-all duration-200 ${
-                            isSelected
-                              ? 'scale-125 border-primary bg-primary shadow-md shadow-primary/40'
-                              : isPassed
-                                ? 'border-primary/80 bg-canvas-light dark:bg-canvas-dark'
-                                : 'border-secondary/40 bg-canvas-light group-hover:border-primary/70 dark:border-secondary dark:bg-canvas-dark'
-                          }`}
-                        >
-                          {isSelected && (
-                            <span className="h-1.5 w-1.5 rounded-full bg-primary-on" />
-                          )}
-                        </span>
-
-                        <span
-                          className={`mt-2.5 font-mono text-[10px] font-semibold transition-colors sm:text-xs ${
-                            isSelected
-                              ? 'text-primary-ink dark:text-primary'
-                              : 'text-secondary/80 group-hover:text-slate-900 dark:text-slate-400 dark:group-hover:text-slate-200'
-                          }`}
-                        >
-                          {exp.current ? 'Actuel' : exp.shortPeriod}
-                        </span>
-                        <span className="mt-0.5 hidden max-w-[110px] truncate text-[11px] font-medium text-secondary dark:text-slate-400 sm:block">
-                          {exp.company}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Tactile Stamp Selector Row */}
-              <div className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-5">
-                {experiences.map((exp, idx) => {
-                  const isSelected = idx === selectedIndex;
-                  return (
-                    <button
-                      key={exp.id}
-                      type="button"
-                      onClick={() => setSelectedIndex(idx)}
-                      aria-label={`Afficher l'expérience chez ${exp.company} (${exp.period})`}
-                      className={`group relative flex flex-col items-start rounded-xl border border-dashed p-3 text-left transition-all duration-200 ${
-                        isSelected
-                          ? 'border-primary bg-primary/15 shadow-sm shadow-primary/10 dark:border-primary/80 dark:bg-primary/15'
-                          : 'border-secondary/30 bg-secondary/[0.04] hover:-translate-y-0.5 hover:border-primary/50 hover:bg-white dark:border-secondary/60 dark:bg-secondary/15 dark:hover:border-primary/50 dark:hover:bg-secondary/30'
-                      }`}
-                    >
-                      <div className="flex w-full items-center justify-between">
-                        <span
-                          className={`flex h-7 w-7 items-center justify-center rounded-lg font-mono text-xs font-bold ${
-                            isSelected
-                              ? 'bg-primary text-primary-on'
-                              : 'bg-secondary/15 text-secondary dark:bg-secondary/60 dark:text-slate-100'
-                          }`}
-                        >
-                          {exp.monogram}
-                        </span>
-                        <span className="font-mono text-[10px] text-secondary/70 dark:text-slate-500">
-                          {exp.index}
-                        </span>
-                      </div>
-                      <p className="mt-2.5 line-clamp-1 text-xs font-bold text-slate-900 dark:text-white">
-                        {exp.company}
-                      </p>
-                      <p className="mt-0.5 line-clamp-1 font-mono text-[10px] text-secondary dark:text-slate-400">
-                        {exp.shortPeriod}
-                      </p>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Synchronized Active Experience Detail Panel */}
-            <AnimatePresence mode="wait">
-              <motion.article
-                key={activeExp.id}
-                id={`exp-panel-${activeExp.id}`}
-                role="tabpanel"
-                aria-labelledby={`exp-tab-${activeExp.id}`}
-                aria-live="polite"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.22 }}
-                className="rounded-2xl border border-secondary/20 bg-white p-6 shadow-sm dark:border-secondary/50 dark:bg-surface-dark/85 sm:p-7"
-              >
-                {/* Top mono metadata line */}
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-secondary/15 pb-4 dark:border-secondary/40">
-                  <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-                    <span className="font-semibold text-primary-ink dark:text-primary">
-                      /{activeExp.period}
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="text-secondary/40 dark:text-secondary"
-                    >
-                      —
-                    </span>
-                    <span className="font-bold text-slate-900 dark:text-white">
-                      {activeExp.company}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 rounded-md border border-secondary/20 bg-secondary/[0.05] px-2 py-0.5 font-mono text-[11px] text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300">
-                      <MapPin className="h-3 w-3" aria-hidden="true" />
-                      {activeExp.location}
-                    </span>
-                    <span
-                      className={`rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold ${
-                        activeExp.current
-                          ? 'border border-primary/40 bg-primary/15 text-primary-ink dark:text-primary'
-                          : 'border border-secondary/20 bg-secondary/[0.05] text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300'
-                      }`}
-                    >
-                      {activeExp.type}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Role & summary */}
-                <div className="mt-5">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">
-                    {activeExp.role}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-secondary dark:text-slate-300">
-                    {activeExp.description}
-                  </p>
-
-                  {/* Structured highlights */}
-                  <ul className="mt-4 space-y-2">
-                    {activeExp.highlights.map((bullet) => (
-                      <li
-                        key={bullet}
-                        className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300"
-                      >
-                        <CheckCircle2
-                          className="mt-0.5 h-4 w-4 shrink-0 text-primary-ink dark:text-primary"
-                          aria-hidden="true"
-                        />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Footer: Tags + Prev/Next controls */}
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-secondary/15 pt-4 dark:border-secondary/40">
-                  <div className="flex flex-wrap gap-1.5">
-                    {activeExp.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md border border-secondary/20 bg-secondary/[0.06] px-2.5 py-0.5 font-mono text-[11px] font-medium text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      disabled={selectedIndex === 0}
-                      onClick={() =>
-                        setSelectedIndex((prev) => Math.max(0, prev - 1))
-                      }
-                      aria-label="Expérience plus récente"
-                      className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-secondary transition-colors hover:border-primary/50 hover:text-primary-ink disabled:cursor-not-allowed disabled:opacity-40 dark:border-secondary/55 dark:bg-secondary/25 dark:text-slate-200 dark:hover:border-primary/50 dark:hover:text-primary"
-                    >
-                      <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
-                      <span>Plus récent</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      disabled={selectedIndex === experiences.length - 1}
-                      onClick={() =>
-                        setSelectedIndex((prev) =>
-                          Math.min(experiences.length - 1, prev + 1)
-                        )
-                      }
-                      aria-label="Expérience précédente"
-                      className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-secondary transition-colors hover:border-primary/50 hover:text-primary-ink disabled:cursor-not-allowed disabled:opacity-40 dark:border-secondary/55 dark:bg-secondary/25 dark:text-slate-200 dark:hover:border-primary/50 dark:hover:text-primary"
-                    >
-                      <span>Plus ancien</span>
-                      <ChevronRight
-                        className="h-3.5 w-3.5"
-                        aria-hidden="true"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </motion.article>
-            </AnimatePresence>
-          </div>
-        ) : (
-          /* MODE 2: Full Vertical Chronological Timeline */
-          <div className="relative pl-6 sm:pl-8">
-            <div
-              aria-hidden="true"
-              className="absolute bottom-2 left-[7px] top-2 w-px bg-secondary/25 dark:bg-secondary/60 sm:left-[9px]"
-            />
-
-            <div className="space-y-5">
-              {experiences.map((exp, index) => (
-                <motion.article
-                  key={exp.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
-                  transition={{ duration: 0.35, delay: index * 0.04 }}
-                  className="relative"
+                <span
+                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold ${
+                    exp.current
+                      ? 'bg-primary text-primary-on'
+                      : 'bg-slate-100 text-secondary dark:bg-secondary/40 dark:text-slate-300'
+                  }`}
                 >
-                  <span
-                    aria-hidden="true"
-                    className={`absolute -left-6 top-6 flex h-4 w-4 items-center justify-center rounded-full border-2 sm:-left-8 sm:h-5 sm:w-5 ${
-                      exp.current
-                        ? 'border-primary bg-primary/20'
-                        : 'border-secondary/45 bg-canvas-light dark:border-secondary dark:bg-canvas-dark'
-                    }`}
-                  >
-                    {exp.current && (
-                      <span className="h-2 w-2 rounded-full bg-primary" />
-                    )}
-                  </span>
+                  {exp.type}
+                </span>
 
-                  <div className="rounded-2xl border border-secondary/20 bg-white p-5 transition-colors hover:border-primary/45 dark:border-secondary/50 dark:bg-surface-dark/80 dark:hover:border-primary/45 sm:p-6">
-                    <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
-                      <div>
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="text-base font-bold text-slate-900 dark:text-white sm:text-lg">
-                            {exp.role}
-                          </h3>
-                          {exp.current && (
-                            <span className="rounded-full border border-primary/40 bg-primary/15 px-2 py-0.5 font-mono text-[11px] font-semibold text-primary-ink dark:text-primary">
-                              Actuel
-                            </span>
-                          )}
-                        </div>
-                        <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-secondary dark:text-slate-400">
-                          <span className="inline-flex items-center gap-1.5 font-medium text-slate-800 dark:text-slate-200">
-                            <Briefcase
-                              className="h-3.5 w-3.5 text-primary-ink dark:text-primary"
-                              aria-hidden="true"
-                            />
-                            {exp.company}
-                          </span>
-                          <span className="inline-flex items-center gap-1 text-xs text-secondary/80 dark:text-slate-400">
-                            <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-                            {exp.location}
-                          </span>
-                        </div>
-                      </div>
+                <span className="inline-flex items-center gap-1 text-xs font-medium text-secondary dark:text-slate-400">
+                  <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span>{exp.location}</span>
+                </span>
+              </div>
 
-                      <span className="shrink-0 font-mono text-xs font-medium text-secondary dark:text-slate-400">
-                        {exp.period}
-                      </span>
-                    </div>
+              {/* Right: Role, Company & plain-language description */}
+              <div className="md:col-span-9">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="text-lg font-extrabold text-ink dark:text-white sm:text-xl">
+                    {exp.role}
+                  </h3>
+                </div>
 
-                    <p className="mt-3 text-sm leading-relaxed text-secondary dark:text-slate-300">
-                      {exp.description}
-                    </p>
+                <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-primary-ink dark:text-primary">
+                  <Briefcase className="h-4 w-4" aria-hidden="true" />
+                  <span>{exp.company}</span>
+                </p>
 
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {exp.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-md border border-secondary/20 bg-secondary/[0.06] px-2 py-0.5 font-mono text-[11px] text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        )}
+                <p className="mt-3 text-[15px] leading-relaxed text-secondary dark:text-slate-300">
+                  {exp.description}
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {exp.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-lg border border-slate-200 bg-canvas-light px-2.5 py-1 font-mono text-xs font-medium text-secondary dark:border-secondary/50 dark:bg-canvas-dark dark:text-slate-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
       </div>
     </section>
   );

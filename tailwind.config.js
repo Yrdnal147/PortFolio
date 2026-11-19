@@ -12,31 +12,31 @@ export default {
         primary: {
           DEFAULT: '#04E762',
           hover: '#03CC56',
-          ink: '#028A3A',
-          on: '#06140B',
+          ink: '#028538',
+          soft: '#E7FCEE',
+          on: '#061A0E',
         },
         secondary: {
           DEFAULT: '#454955',
-          light: '#5B6070',
-          dark: '#2A2D36',
+          light: '#5A5F6E',
+          dark: '#2B2E37',
+        },
+        ink: {
+          DEFAULT: '#14171F',
+          muted: '#454955',
         },
         canvas: {
-          dark: '#0A0B0E',
-          light: '#F8F9FA',
+          light: '#F9FAFB',
+          dark: '#0B0D11',
         },
         surface: {
-          dark: '#14161C',
           light: '#FFFFFF',
+          dark: '#14171F',
         },
       },
-      backgroundImage: {
-        'dot-pattern-dark':
-          'radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
-        'dot-pattern-light':
-          'radial-gradient(rgba(69, 73, 85, 0.12) 1px, transparent 1px)',
-      },
-      backgroundSize: {
-        'dot-grid': '24px 24px',
+      boxShadow: {
+        soft: '0 2px 12px rgba(20, 23, 31, 0.05)',
+        card: '0 8px 28px rgba(20, 23, 31, 0.06)',
       },
     },
   },
