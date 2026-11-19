@@ -231,10 +231,10 @@ export default function App() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.96 }}
                 transition={{ duration: 0.18 }}
-                className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-slate-900/95 px-4 py-2.5 font-mono text-xs font-medium text-white shadow-xl backdrop-blur-md dark:border-emerald-400/30 dark:bg-surface-dark"
+                className="inline-flex items-center gap-2 rounded-xl border border-primary/40 bg-secondary-dark/95 px-4 py-2.5 font-mono text-xs font-medium text-white shadow-xl backdrop-blur-md dark:border-primary/40 dark:bg-surface-dark"
               >
                 <Check
-                  className="h-3.5 w-3.5 text-emerald-400"
+                  className="h-3.5 w-3.5 text-primary"
                   aria-hidden="true"
                 />
                 <span>{toast}</span>

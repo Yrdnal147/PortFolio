@@ -50,7 +50,7 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
     <section
       id="hero"
       aria-label="Présentation"
-      className="relative overflow-hidden border-b border-slate-200/80 dark:border-white/10"
+      className="relative overflow-hidden border-b border-secondary/15 dark:border-secondary/40"
     >
       {/* Subtle radial spotlight & dot grid */}
       <div
@@ -59,7 +59,7 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-28 left-1/2 h-80 w-[40rem] -translate-x-1/2 rounded-full bg-blue-500/15 blur-[110px]"
+        className="pointer-events-none absolute -top-28 left-1/2 h-80 w-[40rem] -translate-x-1/2 rounded-full bg-primary/15 blur-[120px] dark:bg-primary/10"
       />
 
       <div className="relative mx-auto max-w-5xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16">
@@ -73,12 +73,12 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
           >
             {/* Availability badge */}
             <motion.div variants={itemVariants} className="mb-6">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-medium text-emerald-700 dark:border-emerald-400/20 dark:bg-emerald-500/10 dark:text-emerald-300">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-primary/35 bg-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary-ink dark:border-primary/30 dark:bg-primary/10 dark:text-primary">
                 <span className="relative flex h-2 w-2" aria-hidden="true">
                   {!reducedMotion && (
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                   )}
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                 </span>
                 <span>{personalInfo.availability}</span>
               </span>
@@ -95,17 +95,17 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
             {/* Subtitle */}
             <motion.p
               variants={itemVariants}
-              className="mt-3.5 font-mono text-sm font-medium text-blue-600 dark:text-blue-400 sm:text-[15px]"
+              className="mt-3.5 font-mono text-sm font-semibold text-primary-ink dark:text-primary sm:text-[15px]"
             >
               {personalInfo.role}
             </motion.p>
 
-            {/* Dynamic specialization rotator (inspired by rmichels.com) */}
+            {/* Dynamic specialization rotator */}
             <motion.div
               variants={itemVariants}
-              className="mt-3 flex flex-wrap items-baseline gap-x-1.5 text-sm font-medium text-slate-700 dark:text-slate-300"
+              className="mt-3 flex flex-wrap items-baseline gap-x-1.5 text-sm font-medium text-secondary dark:text-slate-300"
             >
-              <span className="font-mono text-xs text-slate-500 dark:text-slate-400">
+              <span className="font-mono text-xs text-secondary/80 dark:text-slate-400">
                 &gt;_ focus :
               </span>
               {reducedMotion ? (
@@ -133,19 +133,19 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
             {/* Hook (2 lines max) */}
             <motion.p
               variants={itemVariants}
-              className="mt-4 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-400"
+              className="mt-4 max-w-xl text-base leading-relaxed text-secondary dark:text-slate-400"
             >
               {personalInfo.tagline}
             </motion.p>
 
-            {/* Primary & Secondary CTAs */}
+            {/* Primary (#04E762) & Secondary (#454955) CTAs */}
             <motion.div
               variants={itemVariants}
               className="mt-7 flex flex-wrap items-center gap-3"
             >
               <a
                 href="#projects"
-                className="group inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-blue-600/25 transition-all hover:bg-blue-500 active:scale-[0.98]"
+                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-primary-on shadow-sm shadow-primary/25 transition-all hover:bg-primary-hover active:scale-[0.98]"
               >
                 <span>Voir mes projets</span>
                 <ArrowRight
@@ -156,7 +156,7 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
 
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 transition-all hover:border-slate-400 hover:bg-slate-50 active:scale-[0.98] dark:border-white/15 dark:bg-surface-dark/80 dark:text-slate-100 dark:hover:border-white/25 dark:hover:bg-surface-dark"
+                className="inline-flex items-center gap-2 rounded-xl border border-secondary/35 bg-secondary px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-secondary-light active:scale-[0.98] dark:border-secondary dark:bg-secondary/45 dark:text-slate-100 dark:hover:border-primary/40 dark:hover:bg-secondary/70"
               >
                 <span>Me contacter</span>
               </a>
@@ -165,13 +165,13 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
             {/* Social links & location */}
             <motion.div
               variants={itemVariants}
-              className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2.5 border-t border-slate-200/80 pt-5 text-sm text-slate-600 dark:border-white/10 dark:text-slate-400"
+              className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2.5 border-t border-secondary/15 pt-5 text-sm text-secondary dark:border-secondary/40 dark:text-slate-400"
             >
               <a
                 href={personalInfo.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 transition-colors hover:text-slate-900 dark:hover:text-white"
+                className="inline-flex items-center gap-1.5 transition-colors hover:text-primary-ink dark:hover:text-primary"
               >
                 <Github className="h-4 w-4" aria-hidden="true" />
                 <span className="font-mono text-xs">GitHub</span>
@@ -181,7 +181,7 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
                 href={personalInfo.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 transition-colors hover:text-slate-900 dark:hover:text-white"
+                className="inline-flex items-center gap-1.5 transition-colors hover:text-primary-ink dark:hover:text-primary"
               >
                 <Linkedin className="h-4 w-4" aria-hidden="true" />
                 <span className="font-mono text-xs">
@@ -191,20 +191,20 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
 
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="inline-flex items-center gap-1.5 transition-colors hover:text-slate-900 dark:hover:text-white"
+                className="inline-flex items-center gap-1.5 transition-colors hover:text-primary-ink dark:hover:text-primary"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
                 <span className="font-mono text-xs">{personalInfo.email}</span>
               </a>
 
-              <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-500">
+              <span className="inline-flex items-center gap-1 text-secondary/75 dark:text-slate-500">
                 <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
                 <span className="font-mono text-xs">{personalInfo.location}</span>
               </span>
             </motion.div>
           </motion.div>
 
-          {/* Right: Quick-access interactive decks for Réalisations & Parcours (inspired by yl0.me) */}
+          {/* Right: Quick-access interactive decks for Réalisations & Parcours */}
           <motion.aside
             aria-label="Accès rapide aux réalisations et au parcours"
             initial={{ opacity: 0, y: 16 }}
@@ -215,11 +215,11 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
             {/* Deck 1: Réalisations Quick Access */}
             <div
               data-bp-box
-              className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-5 transition-all hover:border-blue-500/45 hover:shadow-lg hover:shadow-blue-500/5 dark:border-white/10 dark:bg-surface-dark/75 dark:hover:border-blue-500/45"
+              className="group relative overflow-hidden rounded-2xl border border-secondary/20 bg-white/95 p-5 transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 dark:border-secondary/50 dark:bg-surface-dark/80 dark:hover:border-primary/50"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="rounded-md bg-blue-500/10 px-2 py-0.5 font-mono text-[11px] font-semibold text-blue-600 dark:text-blue-400">
+                  <span className="rounded-md bg-primary/15 px-2 py-0.5 font-mono text-[11px] font-semibold text-primary-ink dark:text-primary">
                     [P]
                   </span>
                   <span className="text-sm font-bold text-slate-900 dark:text-white">
@@ -228,7 +228,7 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
                 </div>
                 <a
                   href="#projects"
-                  className="inline-flex items-center gap-1 font-mono text-xs font-medium text-blue-600 transition-colors hover:text-blue-500 dark:text-blue-400"
+                  className="inline-flex items-center gap-1 font-mono text-xs font-medium text-primary-ink transition-colors hover:opacity-80 dark:text-primary"
                 >
                   <span>0{projects.length} projets</span>
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -244,20 +244,20 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
                 {projects.map((p) => (
                   <div
                     key={p.id}
-                    className="rounded-xl border border-slate-200/80 bg-slate-50/90 p-2.5 transition-all duration-200 group-hover:border-blue-500/25 dark:border-white/10 dark:bg-white/[0.03]"
+                    className="rounded-xl border border-secondary/15 bg-secondary/[0.04] p-2.5 transition-all duration-200 group-hover:border-primary/30 dark:border-secondary/40 dark:bg-secondary/15"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-[10px] font-semibold text-blue-600 dark:text-blue-400">
+                      <span className="font-mono text-[10px] font-semibold text-primary-ink dark:text-primary">
                         {p.index}
                       </span>
-                      <span className="font-mono text-[9px] text-slate-500 dark:text-slate-400">
+                      <span className="font-mono text-[9px] text-secondary/80 dark:text-slate-400">
                         {p.categories[0]}
                       </span>
                     </div>
                     <p className="mt-1 truncate text-xs font-semibold text-slate-900 dark:text-white">
                       {p.title}
                     </p>
-                    <p className="mt-0.5 truncate font-mono text-[10px] text-slate-500 dark:text-slate-400">
+                    <p className="mt-0.5 truncate font-mono text-[10px] text-secondary/80 dark:text-slate-400">
                       {p.stack.slice(0, 2).join(' · ')}
                     </p>
                   </div>
@@ -265,9 +265,9 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
               </a>
 
               {/* 1-click filtered jumps */}
-              <div className="mt-3.5 flex flex-wrap items-center gap-1.5 border-t border-slate-200/80 pt-3 dark:border-white/10">
+              <div className="mt-3.5 flex flex-wrap items-center gap-1.5 border-t border-secondary/15 pt-3 dark:border-secondary/40">
                 <Layers
-                  className="mr-0.5 h-3.5 w-3.5 text-slate-400"
+                  className="mr-0.5 h-3.5 w-3.5 text-secondary/70 dark:text-slate-400"
                   aria-hidden="true"
                 />
                 {['Mobile', 'Web', 'UI/UX'].map((cat) => (
@@ -275,7 +275,7 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
                     key={cat}
                     type="button"
                     onClick={() => jumpToCategory(cat)}
-                    className="rounded-md border border-slate-200 bg-white px-2 py-0.5 font-mono text-[10px] font-medium text-slate-600 transition-colors hover:border-blue-500/50 hover:text-blue-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300 dark:hover:border-blue-500/50 dark:hover:text-blue-400"
+                    className="rounded-md border border-secondary/20 bg-white px-2 py-0.5 font-mono text-[10px] font-medium text-secondary transition-colors hover:border-primary/60 hover:text-primary-ink dark:border-secondary/50 dark:bg-secondary/20 dark:text-slate-300 dark:hover:border-primary/60 dark:hover:text-primary"
                   >
                     Filtrer : {cat}
                   </button>
@@ -288,18 +288,18 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
               href="#experience"
               data-bp-box
               aria-label="Explorer le parcours professionnel de 2021 à 2026"
-              className="group block rounded-2xl border border-slate-200/90 bg-white/90 p-5 transition-all hover:border-blue-500/45 hover:shadow-lg hover:shadow-blue-500/5 dark:border-white/10 dark:bg-surface-dark/75 dark:hover:border-blue-500/45"
+              className="group block rounded-2xl border border-secondary/20 bg-white/95 p-5 transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 dark:border-secondary/50 dark:bg-surface-dark/80 dark:hover:border-primary/50"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="rounded-md bg-blue-500/10 px-2 py-0.5 font-mono text-[11px] font-semibold text-blue-600 dark:text-blue-400">
+                  <span className="rounded-md bg-primary/15 px-2 py-0.5 font-mono text-[11px] font-semibold text-primary-ink dark:text-primary">
                     [E]
                   </span>
                   <span className="text-sm font-bold text-slate-900 dark:text-white">
                     Parcours
                   </span>
                 </div>
-                <span className="inline-flex items-center gap-1 font-mono text-xs text-slate-500 transition-colors group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400">
+                <span className="inline-flex items-center gap-1 font-mono text-xs text-secondary transition-colors group-hover:text-primary-ink dark:text-slate-400 dark:group-hover:text-primary">
                   <Clock className="h-3.5 w-3.5" aria-hidden="true" />
                   <span>2021 → 2026</span>
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -312,8 +312,8 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
                     key={exp.id}
                     className={`flex flex-col items-center rounded-lg border px-1.5 py-2 text-center transition-transform duration-200 group-hover:-translate-y-0.5 ${
                       idx === 0
-                        ? 'border-blue-500/40 bg-blue-500/10 text-blue-700 dark:text-blue-300'
-                        : 'border-slate-200/80 bg-slate-50/80 text-slate-700 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300'
+                        ? 'border-primary/50 bg-primary/15 text-primary-ink dark:text-primary'
+                        : 'border-secondary/20 bg-secondary/[0.05] text-secondary dark:border-secondary/45 dark:bg-secondary/20 dark:text-slate-300'
                     }`}
                   >
                     <span className="font-mono text-xs font-bold">
@@ -326,8 +326,8 @@ export default function Hero({ reducedMotion, onQuickFilterCategory }) {
                 ))}
               </div>
 
-              <p className="mt-3 text-xs text-slate-600 dark:text-slate-400">
-                <span className="font-semibold text-slate-800 dark:text-slate-200">
+              <p className="mt-3 text-xs text-secondary dark:text-slate-400">
+                <span className="font-semibold text-slate-900 dark:text-slate-200">
                   Ziloo
                 </span>{' '}
                 · OIF Inchclass · Localhost Digital · Fulife · Nexttel

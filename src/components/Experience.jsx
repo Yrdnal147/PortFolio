@@ -41,10 +41,10 @@ export default function Experience() {
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="border-b border-slate-200/80 py-20 dark:border-white/10 sm:py-24"
+      className="border-b border-secondary/15 py-20 dark:border-secondary/40 sm:py-24"
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        {/* Header + View Mode Toggle (Interactive Scrubber vs Full Chronological Timeline) */}
+        {/* Header + View Mode Toggle */}
         <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -53,13 +53,13 @@ export default function Experience() {
             transition={{ duration: 0.4 }}
           >
             <div className="flex items-center gap-2.5">
-              <span className="rounded-md bg-blue-500/10 px-2 py-0.5 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">
+              <span className="rounded-md bg-primary/15 px-2 py-0.5 font-mono text-xs font-semibold text-primary-ink dark:text-primary">
                 [E]
               </span>
-              <span className="font-mono text-xs font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              <span className="font-mono text-xs font-medium uppercase tracking-widest text-secondary dark:text-slate-400">
                 03 / Parcours professionnel
               </span>
-              <span className="font-mono text-xs text-slate-400 dark:text-slate-500">
+              <span className="font-mono text-xs text-secondary/70 dark:text-slate-500">
                 — 01 à 0{experiences.length}
               </span>
             </div>
@@ -69,7 +69,7 @@ export default function Experience() {
             >
               Expériences professionnelles
             </h2>
-            <p className="mt-2 max-w-xl text-sm text-slate-600 dark:text-slate-400 sm:text-base">
+            <p className="mt-2 max-w-xl text-sm text-secondary dark:text-slate-400 sm:text-base">
               Navigue étape par étape sur la frise interactive ou affiche la
               chronologie complète pour une lecture rapide.
             </p>
@@ -79,16 +79,16 @@ export default function Experience() {
           <div
             role="group"
             aria-label="Mode d'affichage du parcours"
-            className="inline-flex items-center gap-1 self-start rounded-xl border border-slate-200/90 bg-white p-1 dark:border-white/10 dark:bg-surface-dark/70 md:self-auto"
+            className="inline-flex items-center gap-1 self-start rounded-xl border border-secondary/20 bg-white p-1 dark:border-secondary/50 dark:bg-surface-dark/80 md:self-auto"
           >
             <button
               type="button"
               aria-pressed={viewMode === 'interactive'}
               onClick={() => setViewMode('interactive')}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-mono text-xs font-medium transition-all ${
+              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-mono text-xs font-semibold transition-all ${
                 viewMode === 'interactive'
-                  ? 'bg-blue-600 text-white shadow-sm shadow-blue-600/25'
-                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                  ? 'bg-primary text-primary-on shadow-sm shadow-primary/25'
+                  : 'text-secondary hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
               }`}
             >
               <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
@@ -99,10 +99,10 @@ export default function Experience() {
               type="button"
               aria-pressed={viewMode === 'timeline'}
               onClick={() => setViewMode('timeline')}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-mono text-xs font-medium transition-all ${
+              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-mono text-xs font-semibold transition-all ${
                 viewMode === 'timeline'
-                  ? 'bg-blue-600 text-white shadow-sm shadow-blue-600/25'
-                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                  ? 'bg-primary text-primary-on shadow-sm shadow-primary/25'
+                  : 'text-secondary hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
               }`}
             >
               <List className="h-3.5 w-3.5" aria-hidden="true" />
@@ -111,19 +111,18 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* MODE 1: Interactive Scrubber + Stamp Deck + Detail Dossier (inspired by yl0.me) */}
+        {/* MODE 1: Interactive Scrubber + Stamp Deck + Detail Dossier */}
         {viewMode === 'interactive' ? (
           <div className="space-y-6">
-            {/* Horizontal Timeline Scrubber */}
             <div
               data-bp-box
-              className="rounded-2xl border border-slate-200/90 bg-white p-5 dark:border-white/10 dark:bg-surface-dark/70 sm:p-6"
+              className="rounded-2xl border border-secondary/20 bg-white p-5 dark:border-secondary/50 dark:bg-surface-dark/80 sm:p-6"
             >
               <div className="mb-3 flex items-center justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-secondary dark:text-slate-400">
                   Chronologie : Actuel → 2021
                 </span>
-                <span className="hidden font-mono text-[11px] text-slate-400 dark:text-slate-500 sm:inline">
+                <span className="hidden font-mono text-[11px] text-secondary/70 dark:text-slate-500 sm:inline">
                   Touches ← / → pour naviguer
                 </span>
               </div>
@@ -138,13 +137,13 @@ export default function Experience() {
                 {/* Base line */}
                 <div
                   aria-hidden="true"
-                  className="absolute left-4 right-4 top-[1.35rem] h-0.5 rounded-full bg-slate-200 dark:bg-white/10"
+                  className="absolute left-4 right-4 top-[1.35rem] h-0.5 rounded-full bg-secondary/20 dark:bg-secondary/60"
                 />
-                {/* Active fill */}
+                {/* Active fill (#04E762) */}
                 <div
                   aria-hidden="true"
                   style={{ width: `calc(${progressPercent}% - 0px)` }}
-                  className="absolute left-4 top-[1.35rem] h-0.5 max-w-[calc(100%-2rem)] rounded-full bg-blue-500 transition-all duration-300"
+                  className="absolute left-4 top-[1.35rem] h-0.5 max-w-[calc(100%-2rem)] rounded-full bg-primary transition-all duration-300"
                 />
 
                 <div className="relative grid grid-cols-5 gap-1">
@@ -165,27 +164,27 @@ export default function Experience() {
                         <span
                           className={`relative z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 transition-all duration-200 ${
                             isSelected
-                              ? 'scale-125 border-blue-500 bg-blue-500 shadow-md shadow-blue-500/40'
+                              ? 'scale-125 border-primary bg-primary shadow-md shadow-primary/40'
                               : isPassed
-                                ? 'border-blue-500/70 bg-canvas-light dark:bg-canvas-dark'
-                                : 'border-slate-300 bg-canvas-light group-hover:border-blue-400 dark:border-white/25 dark:bg-canvas-dark'
+                                ? 'border-primary/80 bg-canvas-light dark:bg-canvas-dark'
+                                : 'border-secondary/40 bg-canvas-light group-hover:border-primary/70 dark:border-secondary dark:bg-canvas-dark'
                           }`}
                         >
                           {isSelected && (
-                            <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-primary-on" />
                           )}
                         </span>
 
                         <span
                           className={`mt-2.5 font-mono text-[10px] font-semibold transition-colors sm:text-xs ${
                             isSelected
-                              ? 'text-blue-600 dark:text-blue-400'
-                              : 'text-slate-500 group-hover:text-slate-800 dark:text-slate-400 dark:group-hover:text-slate-200'
+                              ? 'text-primary-ink dark:text-primary'
+                              : 'text-secondary/80 group-hover:text-slate-900 dark:text-slate-400 dark:group-hover:text-slate-200'
                           }`}
                         >
                           {exp.current ? 'Actuel' : exp.shortPeriod}
                         </span>
-                        <span className="mt-0.5 hidden max-w-[110px] truncate text-[11px] font-medium text-slate-600 dark:text-slate-400 sm:block">
+                        <span className="mt-0.5 hidden max-w-[110px] truncate text-[11px] font-medium text-secondary dark:text-slate-400 sm:block">
                           {exp.company}
                         </span>
                       </button>
@@ -194,7 +193,7 @@ export default function Experience() {
                 </div>
               </div>
 
-              {/* Tactile Stamp / Passport Selector Row (inspired by yl0.me's stamp deck) */}
+              {/* Tactile Stamp Selector Row */}
               <div className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-5">
                 {experiences.map((exp, idx) => {
                   const isSelected = idx === selectedIndex;
@@ -206,28 +205,28 @@ export default function Experience() {
                       aria-label={`Afficher l'expérience chez ${exp.company} (${exp.period})`}
                       className={`group relative flex flex-col items-start rounded-xl border border-dashed p-3 text-left transition-all duration-200 ${
                         isSelected
-                          ? 'border-blue-500 bg-blue-500/10 shadow-sm shadow-blue-500/10 dark:border-blue-400/70 dark:bg-blue-500/15'
-                          : 'border-slate-300/90 bg-slate-50/70 hover:-translate-y-0.5 hover:border-blue-400/50 hover:bg-white dark:border-white/15 dark:bg-white/[0.02] dark:hover:border-white/25 dark:hover:bg-white/[0.05]'
+                          ? 'border-primary bg-primary/15 shadow-sm shadow-primary/10 dark:border-primary/80 dark:bg-primary/15'
+                          : 'border-secondary/30 bg-secondary/[0.04] hover:-translate-y-0.5 hover:border-primary/50 hover:bg-white dark:border-secondary/60 dark:bg-secondary/15 dark:hover:border-primary/50 dark:hover:bg-secondary/30'
                       }`}
                     >
                       <div className="flex w-full items-center justify-between">
                         <span
                           className={`flex h-7 w-7 items-center justify-center rounded-lg font-mono text-xs font-bold ${
                             isSelected
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-slate-200/80 text-slate-700 dark:bg-white/10 dark:text-slate-200'
+                              ? 'bg-primary text-primary-on'
+                              : 'bg-secondary/15 text-secondary dark:bg-secondary/60 dark:text-slate-100'
                           }`}
                         >
                           {exp.monogram}
                         </span>
-                        <span className="font-mono text-[10px] text-slate-400 dark:text-slate-500">
+                        <span className="font-mono text-[10px] text-secondary/70 dark:text-slate-500">
                           {exp.index}
                         </span>
                       </div>
                       <p className="mt-2.5 line-clamp-1 text-xs font-bold text-slate-900 dark:text-white">
                         {exp.company}
                       </p>
-                      <p className="mt-0.5 line-clamp-1 font-mono text-[10px] text-slate-500 dark:text-slate-400">
+                      <p className="mt-0.5 line-clamp-1 font-mono text-[10px] text-secondary dark:text-slate-400">
                         {exp.shortPeriod}
                       </p>
                     </button>
@@ -248,17 +247,17 @@ export default function Experience() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.22 }}
-                className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-surface-dark/80 sm:p-7"
+                className="rounded-2xl border border-secondary/20 bg-white p-6 shadow-sm dark:border-secondary/50 dark:bg-surface-dark/85 sm:p-7"
               >
-                {/* Top mono metadata line like yl0.me's "/Mar 2024 - Now — Company" */}
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80 pb-4 dark:border-white/10">
+                {/* Top mono metadata line */}
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-secondary/15 pb-4 dark:border-secondary/40">
                   <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">
+                    <span className="font-semibold text-primary-ink dark:text-primary">
                       /{activeExp.period}
                     </span>
                     <span
                       aria-hidden="true"
-                      className="text-slate-300 dark:text-white/20"
+                      className="text-secondary/40 dark:text-secondary"
                     >
                       —
                     </span>
@@ -268,15 +267,15 @@ export default function Experience() {
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 font-mono text-[11px] text-slate-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300">
+                    <span className="inline-flex items-center gap-1 rounded-md border border-secondary/20 bg-secondary/[0.05] px-2 py-0.5 font-mono text-[11px] text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300">
                       <MapPin className="h-3 w-3" aria-hidden="true" />
                       {activeExp.location}
                     </span>
                     <span
-                      className={`rounded-md px-2 py-0.5 font-mono text-[11px] font-medium ${
+                      className={`rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold ${
                         activeExp.current
-                          ? 'border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400'
-                          : 'border border-slate-200 bg-slate-50 text-slate-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300'
+                          ? 'border border-primary/40 bg-primary/15 text-primary-ink dark:text-primary'
+                          : 'border border-secondary/20 bg-secondary/[0.05] text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300'
                       }`}
                     >
                       {activeExp.type}
@@ -289,7 +288,7 @@ export default function Experience() {
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">
                     {activeExp.role}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  <p className="mt-2 text-sm leading-relaxed text-secondary dark:text-slate-300">
                     {activeExp.description}
                   </p>
 
@@ -301,7 +300,7 @@ export default function Experience() {
                         className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300"
                       >
                         <CheckCircle2
-                          className="mt-0.5 h-4 w-4 shrink-0 text-blue-500"
+                          className="mt-0.5 h-4 w-4 shrink-0 text-primary-ink dark:text-primary"
                           aria-hidden="true"
                         />
                         <span>{bullet}</span>
@@ -311,12 +310,12 @@ export default function Experience() {
                 </div>
 
                 {/* Footer: Tags + Prev/Next controls */}
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200/80 pt-4 dark:border-white/10">
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-secondary/15 pt-4 dark:border-secondary/40">
                   <div className="flex flex-wrap gap-1.5">
                     {activeExp.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-mono text-[11px] font-medium text-slate-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300"
+                        className="rounded-md border border-secondary/20 bg-secondary/[0.06] px-2.5 py-0.5 font-mono text-[11px] font-medium text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300"
                       >
                         {tag}
                       </span>
@@ -331,7 +330,7 @@ export default function Experience() {
                         setSelectedIndex((prev) => Math.max(0, prev - 1))
                       }
                       aria-label="Expérience plus récente"
-                      className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-slate-700 transition-colors hover:border-blue-500/40 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:border-blue-400/40"
+                      className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-secondary transition-colors hover:border-primary/50 hover:text-primary-ink disabled:cursor-not-allowed disabled:opacity-40 dark:border-secondary/55 dark:bg-secondary/25 dark:text-slate-200 dark:hover:border-primary/50 dark:hover:text-primary"
                     >
                       <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
                       <span>Plus récent</span>
@@ -346,7 +345,7 @@ export default function Experience() {
                         )
                       }
                       aria-label="Expérience précédente"
-                      className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-slate-700 transition-colors hover:border-blue-500/40 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:border-blue-400/40"
+                      className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-secondary transition-colors hover:border-primary/50 hover:text-primary-ink disabled:cursor-not-allowed disabled:opacity-40 dark:border-secondary/55 dark:bg-secondary/25 dark:text-slate-200 dark:hover:border-primary/50 dark:hover:text-primary"
                     >
                       <span>Plus ancien</span>
                       <ChevronRight
@@ -360,11 +359,11 @@ export default function Experience() {
             </AnimatePresence>
           </div>
         ) : (
-          /* MODE 2: Full Vertical Chronological Timeline (all 5 expanded for linear scanning / print) */
+          /* MODE 2: Full Vertical Chronological Timeline */
           <div className="relative pl-6 sm:pl-8">
             <div
               aria-hidden="true"
-              className="absolute bottom-2 left-[7px] top-2 w-px bg-slate-200 dark:bg-white/10 sm:left-[9px]"
+              className="absolute bottom-2 left-[7px] top-2 w-px bg-secondary/25 dark:bg-secondary/60 sm:left-[9px]"
             />
 
             <div className="space-y-5">
@@ -381,16 +380,16 @@ export default function Experience() {
                     aria-hidden="true"
                     className={`absolute -left-6 top-6 flex h-4 w-4 items-center justify-center rounded-full border-2 sm:-left-8 sm:h-5 sm:w-5 ${
                       exp.current
-                        ? 'border-blue-500 bg-blue-500/20'
-                        : 'border-slate-300 bg-canvas-light dark:border-white/25 dark:bg-canvas-dark'
+                        ? 'border-primary bg-primary/20'
+                        : 'border-secondary/45 bg-canvas-light dark:border-secondary dark:bg-canvas-dark'
                     }`}
                   >
                     {exp.current && (
-                      <span className="h-2 w-2 rounded-full bg-blue-500" />
+                      <span className="h-2 w-2 rounded-full bg-primary" />
                     )}
                   </span>
 
-                  <div className="rounded-2xl border border-slate-200/90 bg-white p-5 transition-colors hover:border-blue-500/35 dark:border-white/10 dark:bg-surface-dark/70 dark:hover:border-blue-500/35 sm:p-6">
+                  <div className="rounded-2xl border border-secondary/20 bg-white p-5 transition-colors hover:border-primary/45 dark:border-secondary/50 dark:bg-surface-dark/80 dark:hover:border-primary/45 sm:p-6">
                     <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
@@ -398,32 +397,32 @@ export default function Experience() {
                             {exp.role}
                           </h3>
                           {exp.current && (
-                            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-2 py-0.5 font-mono text-[11px] font-medium text-blue-600 dark:text-blue-400">
+                            <span className="rounded-full border border-primary/40 bg-primary/15 px-2 py-0.5 font-mono text-[11px] font-semibold text-primary-ink dark:text-primary">
                               Actuel
                             </span>
                           )}
                         </div>
-                        <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600 dark:text-slate-400">
+                        <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-secondary dark:text-slate-400">
                           <span className="inline-flex items-center gap-1.5 font-medium text-slate-800 dark:text-slate-200">
                             <Briefcase
-                              className="h-3.5 w-3.5 text-blue-500"
+                              className="h-3.5 w-3.5 text-primary-ink dark:text-primary"
                               aria-hidden="true"
                             />
                             {exp.company}
                           </span>
-                          <span className="inline-flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+                          <span className="inline-flex items-center gap-1 text-xs text-secondary/80 dark:text-slate-400">
                             <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
                             {exp.location}
                           </span>
                         </div>
                       </div>
 
-                      <span className="shrink-0 font-mono text-xs font-medium text-slate-500 dark:text-slate-400">
+                      <span className="shrink-0 font-mono text-xs font-medium text-secondary dark:text-slate-400">
                         {exp.period}
                       </span>
                     </div>
 
-                    <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                    <p className="mt-3 text-sm leading-relaxed text-secondary dark:text-slate-300">
                       {exp.description}
                     </p>
 
@@ -431,7 +430,7 @@ export default function Experience() {
                       {exp.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 font-mono text-[11px] text-slate-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300"
+                          className="rounded-md border border-secondary/20 bg-secondary/[0.06] px-2 py-0.5 font-mono text-[11px] text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300"
                         >
                           {tag}
                         </span>

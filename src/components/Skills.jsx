@@ -20,7 +20,7 @@ export default function Skills({ onFilterByTech, reducedMotion }) {
     <section
       id="skills"
       aria-labelledby="skills-heading"
-      className="border-b border-slate-200/80 py-20 dark:border-white/10 sm:py-24"
+      className="border-b border-secondary/15 py-20 dark:border-secondary/40 sm:py-24"
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <motion.div
@@ -31,10 +31,10 @@ export default function Skills({ onFilterByTech, reducedMotion }) {
           className="mb-12"
         >
           <div className="flex items-center gap-2.5">
-            <span className="rounded-md bg-blue-500/10 px-2 py-0.5 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">
+            <span className="rounded-md bg-primary/15 px-2 py-0.5 font-mono text-xs font-semibold text-primary-ink dark:text-primary">
               [S]
             </span>
-            <span className="font-mono text-xs font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
+            <span className="font-mono text-xs font-medium uppercase tracking-widest text-secondary dark:text-slate-400">
               02 / Compétences
             </span>
           </div>
@@ -44,7 +44,7 @@ export default function Skills({ onFilterByTech, reducedMotion }) {
           >
             Stack technique &amp; savoir-faire
           </h2>
-          <p className="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-400 sm:text-base">
+          <p className="mt-2 max-w-2xl text-sm text-secondary dark:text-slate-400 sm:text-base">
             Clique sur une technologie marquée d’une flèche pour filtrer
             instantanément les réalisations associées.
           </p>
@@ -61,23 +61,23 @@ export default function Skills({ onFilterByTech, reducedMotion }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: index * 0.07 }}
-                className="group flex flex-col rounded-2xl border border-slate-200/90 bg-white p-6 transition-colors hover:border-blue-500/40 dark:border-white/10 dark:bg-surface-dark/70 dark:hover:border-blue-500/40"
+                className="group flex flex-col rounded-2xl border border-secondary/20 bg-white p-6 transition-colors hover:border-primary/50 dark:border-secondary/50 dark:bg-surface-dark/80 dark:hover:border-primary/50"
               >
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 text-primary-ink dark:text-primary">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
                       {category.title}
                     </h3>
                   </div>
-                  <span className="font-mono text-[11px] text-slate-400 dark:text-slate-500">
+                  <span className="font-mono text-[11px] text-secondary/70 dark:text-slate-500">
                     {category.code}
                   </span>
                 </div>
 
-                <p className="mb-5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                <p className="mb-5 text-sm leading-relaxed text-secondary dark:text-slate-400">
                   {category.description}
                 </p>
 
@@ -89,16 +89,16 @@ export default function Skills({ onFilterByTech, reducedMotion }) {
                           type="button"
                           onClick={() => handleSkillClick(skill.filterTech)}
                           title={`Voir les projets utilisant ${skill.filterTech}`}
-                          className="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-xs font-medium text-slate-700 transition-colors hover:border-blue-500/50 hover:bg-blue-500/10 hover:text-blue-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:border-blue-400/50 dark:hover:bg-blue-500/15 dark:hover:text-blue-300"
+                          className="inline-flex items-center gap-1 rounded-md border border-secondary/20 bg-secondary/[0.05] px-2.5 py-1 font-mono text-xs font-medium text-slate-800 transition-colors hover:border-primary/60 hover:bg-primary/15 hover:text-primary-ink dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-200 dark:hover:border-primary/60 dark:hover:bg-primary/15 dark:hover:text-primary"
                         >
                           <span>{skill.name}</span>
                           <ArrowUpRight
-                            className="h-3 w-3 opacity-60"
+                            className="h-3 w-3 opacity-70"
                             aria-hidden="true"
                           />
                         </button>
                       ) : (
-                        <span className="inline-block rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-xs font-medium text-slate-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200">
+                        <span className="inline-block rounded-md border border-secondary/20 bg-secondary/[0.05] px-2.5 py-1 font-mono text-xs font-medium text-slate-800 dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-200">
                           {skill.name}
                         </span>
                       )}

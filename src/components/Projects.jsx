@@ -28,7 +28,7 @@ function ProjectMockupPlaceholder({ project }) {
 
   return (
     <div
-      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-gradient-to-br ${project.accent} bg-slate-900/95 p-5`}
+      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-gradient-to-br ${project.accent} bg-[#111318] p-5`}
     >
       {/* Subtle architectural dot grid */}
       <div
@@ -42,37 +42,37 @@ function ProjectMockupPlaceholder({ project }) {
       />
 
       {variant === 'choozz' && (
-        <div className="relative z-10 w-56 rounded-2xl border border-white/15 bg-[#0B1120]/90 p-3.5 shadow-2xl transition-transform duration-300 group-hover:-translate-y-1">
+        <div className="relative z-10 w-56 rounded-2xl border border-secondary/70 bg-[#0C0E13]/95 p-3.5 shadow-2xl transition-transform duration-300 group-hover:-translate-y-1">
           <div className="mb-2.5 flex items-center justify-between">
-            <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/20 px-2 py-0.5 font-mono text-[10px] text-blue-300">
+            <span className="inline-flex items-center gap-1 rounded-full bg-primary/15 px-2 py-0.5 font-mono text-[10px] text-primary">
               <MapPin className="h-2.5 w-2.5" aria-hidden="true" /> Douala •
               Yaoundé
             </span>
-            <span className="rounded bg-amber-500/20 px-1.5 py-0.5 font-mono text-[9px] font-semibold text-amber-300">
+            <span className="rounded bg-secondary/70 px-1.5 py-0.5 font-mono text-[9px] font-semibold text-white">
               VIP
             </span>
           </div>
-          <div className="h-14 rounded-lg bg-gradient-to-r from-blue-600/35 to-indigo-500/25 p-2.5">
-            <div className="h-2 w-24 rounded bg-white/75" />
-            <div className="mt-1.5 h-1.5 w-16 rounded bg-white/30" />
+          <div className="h-14 rounded-lg bg-gradient-to-r from-primary/30 to-secondary/40 p-2.5">
+            <div className="h-2 w-24 rounded bg-white/80" />
+            <div className="mt-1.5 h-1.5 w-16 rounded bg-white/35" />
           </div>
           <div className="mt-2.5 grid grid-cols-2 gap-2">
-            <div className="rounded-md border border-white/10 bg-white/5 p-2">
-              <div className="h-1.5 w-10 rounded bg-white/55" />
-              <div className="mt-1 h-1.5 w-6 rounded bg-blue-400/70" />
+            <div className="rounded-md border border-secondary/60 bg-secondary/20 p-2">
+              <div className="h-1.5 w-10 rounded bg-white/60" />
+              <div className="mt-1 h-1.5 w-6 rounded bg-primary/80" />
             </div>
-            <div className="rounded-md border border-white/10 bg-white/5 p-2">
-              <div className="h-1.5 w-12 rounded bg-white/55" />
-              <div className="mt-1 h-1.5 w-8 rounded bg-emerald-400/70" />
+            <div className="rounded-md border border-secondary/60 bg-secondary/20 p-2">
+              <div className="h-1.5 w-12 rounded bg-white/60" />
+              <div className="mt-1 h-1.5 w-8 rounded bg-primary/50" />
             </div>
           </div>
         </div>
       )}
 
       {variant === 'sonoritiz' && (
-        <div className="relative z-10 w-56 rounded-2xl border border-white/15 bg-[#0B1120]/90 p-3.5 shadow-2xl transition-transform duration-300 group-hover:-translate-y-1">
+        <div className="relative z-10 w-56 rounded-2xl border border-secondary/70 bg-[#0C0E13]/95 p-3.5 shadow-2xl transition-transform duration-300 group-hover:-translate-y-1">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-sky-400 text-white shadow-lg shadow-blue-500/30">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-on shadow-lg shadow-primary/25">
               <Music className="h-5 w-5" aria-hidden="true" />
             </div>
             <div className="flex-1">
@@ -86,33 +86,31 @@ function ProjectMockupPlaceholder({ project }) {
                 key={i}
                 style={{ height: `${h}%` }}
                 className={`w-1.5 rounded-full transition-all duration-300 ${
-                  i < 7
-                    ? 'bg-blue-400 group-hover:bg-sky-300'
-                    : 'bg-white/20'
+                  i < 7 ? 'bg-primary' : 'bg-secondary'
                 }`}
               />
             ))}
           </div>
-          <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-white/10">
-            <div className="h-full w-3/5 rounded-full bg-blue-500" />
+          <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-secondary/60">
+            <div className="h-full w-3/5 rounded-full bg-primary" />
           </div>
         </div>
       )}
 
       {variant === 'jobconnect' && (
         <div className="relative z-10 flex w-full max-w-[16.5rem] items-end gap-2.5 transition-transform duration-300 group-hover:-translate-y-1">
-          <div className="flex-1 rounded-xl border border-white/15 bg-[#0B1120]/90 p-3 shadow-2xl">
+          <div className="flex-1 rounded-xl border border-secondary/70 bg-[#0C0E13]/95 p-3 shadow-2xl">
             <div className="mb-2 flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-white/25" />
-              <span className="h-2 w-2 rounded-full bg-white/25" />
-              <span className="ml-auto font-mono text-[9px] text-cyan-300">
+              <span className="h-2 w-2 rounded-full bg-secondary" />
+              <span className="h-2 w-2 rounded-full bg-secondary" />
+              <span className="ml-auto font-mono text-[9px] text-primary">
                 Web + Mobile
               </span>
             </div>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 p-2">
+              <div className="flex items-center gap-2 rounded-lg border border-secondary/60 bg-secondary/20 p-2">
                 <Briefcase
-                  className="h-3.5 w-3.5 text-blue-400"
+                  className="h-3.5 w-3.5 text-primary"
                   aria-hidden="true"
                 />
                 <div className="flex-1 space-y-1">
@@ -120,9 +118,9 @@ function ProjectMockupPlaceholder({ project }) {
                   <div className="h-1.5 w-12 rounded bg-white/30" />
                 </div>
               </div>
-              <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 p-2">
+              <div className="flex items-center gap-2 rounded-lg border border-secondary/60 bg-secondary/20 p-2">
                 <Sparkles
-                  className="h-3.5 w-3.5 text-cyan-400"
+                  className="h-3.5 w-3.5 text-primary"
                   aria-hidden="true"
                 />
                 <div className="flex-1 space-y-1">
@@ -132,21 +130,21 @@ function ProjectMockupPlaceholder({ project }) {
               </div>
             </div>
           </div>
-          <div className="h-24 w-14 shrink-0 rounded-xl border border-white/15 bg-[#0B1120]/95 p-2 shadow-xl">
-            <div className="mx-auto mb-2 h-1 w-5 rounded-full bg-white/25" />
+          <div className="h-24 w-14 shrink-0 rounded-xl border border-secondary/70 bg-[#0C0E13]/95 p-2 shadow-xl">
+            <div className="mx-auto mb-2 h-1 w-5 rounded-full bg-secondary" />
             <div className="space-y-1.5">
-              <div className="h-4 rounded bg-blue-500/25" />
-              <div className="h-4 rounded bg-white/10" />
-              <div className="h-4 rounded bg-white/10" />
+              <div className="h-4 rounded bg-primary/35" />
+              <div className="h-4 rounded bg-secondary/45" />
+              <div className="h-4 rounded bg-secondary/45" />
             </div>
           </div>
         </div>
       )}
 
       {variant === 'social' && (
-        <div className="relative z-10 w-56 rounded-2xl border border-white/15 bg-[#0B1120]/90 p-3.5 shadow-2xl transition-transform duration-300 group-hover:-translate-y-1">
+        <div className="relative z-10 w-56 rounded-2xl border border-secondary/70 bg-[#0C0E13]/95 p-3.5 shadow-2xl transition-transform duration-300 group-hover:-translate-y-1">
           <div className="mb-2.5 flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500/25 text-blue-300">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/20 text-primary">
               <Users className="h-3.5 w-3.5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
@@ -154,14 +152,14 @@ function ProjectMockupPlaceholder({ project }) {
               <div className="h-1 w-12 rounded bg-white/30" />
             </div>
           </div>
-          <div className="h-12 rounded-lg border border-white/10 bg-white/[0.04] p-2">
-            <div className="h-1.5 w-full rounded bg-white/30" />
+          <div className="h-12 rounded-lg border border-secondary/60 bg-secondary/20 p-2">
+            <div className="h-1.5 w-full rounded bg-white/35" />
             <div className="mt-1.5 h-1.5 w-4/5 rounded bg-white/20" />
-            <div className="mt-1.5 h-1.5 w-2/5 rounded bg-blue-400/50" />
+            <div className="mt-1.5 h-1.5 w-2/5 rounded bg-primary/65" />
           </div>
           <div className="mt-2.5 flex items-center gap-2">
-            <span className="h-2 w-8 rounded-full bg-blue-500/40" />
-            <span className="h-2 w-8 rounded-full bg-white/15" />
+            <span className="h-2 w-8 rounded-full bg-primary/55" />
+            <span className="h-2 w-8 rounded-full bg-secondary/80" />
             <span className="ml-auto font-mono text-[9px] text-slate-400">
               Firebase
             </span>
@@ -182,10 +180,10 @@ function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.97 }}
       transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-500/45 hover:shadow-xl hover:shadow-blue-500/5 dark:border-white/10 dark:bg-surface-dark/75 dark:hover:border-blue-500/45"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-secondary/20 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/55 hover:shadow-xl hover:shadow-primary/5 dark:border-secondary/50 dark:bg-surface-dark/80 dark:hover:border-primary/55"
     >
-      {/* Image / Mockup zone with editorial index (inspired by yl0.me) */}
-      <div className="relative h-52 w-full overflow-hidden border-b border-slate-200/80 dark:border-white/10">
+      {/* Image / Mockup zone with editorial index */}
+      <div className="relative h-52 w-full overflow-hidden border-b border-secondary/15 dark:border-secondary/45">
         {project.image && !imgError ? (
           <img
             src={project.image}
@@ -201,13 +199,13 @@ function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
         {/* Index badge top-left */}
         <span
           aria-hidden="true"
-          className="absolute left-3 top-3 rounded-md border border-white/15 bg-black/55 px-2 py-0.5 font-mono text-[11px] font-semibold text-white backdrop-blur-md"
+          className="absolute left-3 top-3 rounded-md border border-primary/40 bg-black/70 px-2 py-0.5 font-mono text-[11px] font-semibold text-primary backdrop-blur-md"
         >
           {project.index}
         </span>
 
         {/* Year + Category badge bottom-right */}
-        <span className="absolute bottom-3 right-3 rounded-md border border-white/15 bg-black/55 px-2 py-0.5 font-mono text-[10px] text-slate-200 backdrop-blur-md">
+        <span className="absolute bottom-3 right-3 rounded-md border border-secondary/60 bg-black/70 px-2 py-0.5 font-mono text-[10px] text-slate-200 backdrop-blur-md">
           {project.year} · {project.subtitle}
         </span>
       </div>
@@ -219,7 +217,7 @@ function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
             <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
               {project.title}
             </h3>
-            <p className="mt-0.5 font-mono text-[11px] text-slate-500 dark:text-slate-400">
+            <p className="mt-0.5 font-mono text-[11px] text-secondary/85 dark:text-slate-400">
               {project.role}
             </p>
           </div>
@@ -227,13 +225,13 @@ function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
             type="button"
             onClick={(e) => onOpenDetails(project, e.currentTarget)}
             aria-label={`Ouvrir l'étude de cas de ${project.title}`}
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:border-blue-500/40 hover:text-blue-600 dark:border-white/10 dark:text-slate-400 dark:hover:border-blue-500/40 dark:hover:text-blue-400"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-secondary/20 text-secondary transition-colors hover:border-primary/55 hover:text-primary-ink dark:border-secondary/50 dark:text-slate-400 dark:hover:border-primary/55 dark:hover:text-primary"
           >
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
 
-        <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+        <p className="mt-3 text-sm leading-relaxed text-secondary dark:text-slate-400">
           {project.description}
         </p>
 
@@ -246,7 +244,7 @@ function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
               return (
                 <span
                   key={tech}
-                  className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-mono text-[11px] font-medium text-slate-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300"
+                  className="rounded-md border border-secondary/20 bg-secondary/[0.06] px-2.5 py-0.5 font-mono text-[11px] font-medium text-secondary dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300"
                 >
                   {tech}
                 </span>
@@ -259,10 +257,10 @@ function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
                 onClick={() => onSelectTech(isSelected ? null : tech)}
                 aria-pressed={isSelected}
                 title={`Filtrer les projets utilisant ${tech}`}
-                className={`rounded-md border px-2.5 py-0.5 font-mono text-[11px] font-medium transition-colors ${
+                className={`rounded-md border px-2.5 py-0.5 font-mono text-[11px] font-semibold transition-colors ${
                   isSelected
-                    ? 'border-blue-500 bg-blue-600 text-white'
-                    : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-blue-500/50 hover:text-blue-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300 dark:hover:border-blue-400/50 dark:hover:text-blue-300'
+                    ? 'border-primary bg-primary text-primary-on'
+                    : 'border-secondary/20 bg-secondary/[0.06] text-slate-800 hover:border-primary/60 hover:text-primary-ink dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-200 dark:hover:border-primary/60 dark:hover:text-primary'
                 }`}
               >
                 {tech}
@@ -272,12 +270,12 @@ function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
         </div>
 
         {/* Actions */}
-        <div className="mt-6 flex items-center gap-3 border-t border-slate-200/80 pt-4 dark:border-white/10">
+        <div className="mt-6 flex items-center gap-3 border-t border-secondary/15 pt-4 dark:border-secondary/40">
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-semibold text-slate-800 transition-colors hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:border-white/20 dark:hover:bg-white/[0.08]"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-secondary/25 bg-secondary/[0.08] px-3.5 py-2 text-xs font-semibold text-slate-900 transition-colors hover:border-secondary/50 hover:bg-secondary/15 dark:border-secondary/60 dark:bg-secondary/35 dark:text-slate-100 dark:hover:border-primary/45 dark:hover:bg-secondary/55"
           >
             <Github className="h-3.5 w-3.5" aria-hidden="true" />
             <span>Code GitHub</span>
@@ -286,7 +284,7 @@ function ProjectCard({ project, activeTech, onSelectTech, onOpenDetails }) {
           <button
             type="button"
             onClick={(e) => onOpenDetails(project, e.currentTarget)}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-500"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-3.5 py-2 text-xs font-bold text-primary-on transition-colors hover:bg-primary-hover"
           >
             <span>Démo / Détails</span>
             <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
@@ -318,7 +316,6 @@ export default function Projects({
 
   const hasActiveFilter = activeCategory !== 'Tous' || Boolean(activeTech);
 
-  // Case study navigation across currently filtered list (or all projects fallback)
   const navPool = filteredProjects.length > 0 ? filteredProjects : projects;
   const selectedIndex = navPool.findIndex((p) => p.id === selectedProjectId);
   const selectedProject =
@@ -394,10 +391,10 @@ export default function Projects({
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="border-b border-slate-200/80 py-20 dark:border-white/10 sm:py-24"
+      className="border-b border-secondary/15 py-20 dark:border-secondary/40 sm:py-24"
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        {/* Editorial header inspired by yl0.me ([P] + range counter) */}
+        {/* Editorial header */}
         <div className="mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -406,13 +403,13 @@ export default function Projects({
             transition={{ duration: 0.4 }}
           >
             <div className="flex items-center gap-2.5">
-              <span className="rounded-md bg-blue-500/10 px-2 py-0.5 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">
+              <span className="rounded-md bg-primary/15 px-2 py-0.5 font-mono text-xs font-semibold text-primary-ink dark:text-primary">
                 [P]
               </span>
-              <span className="font-mono text-xs font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              <span className="font-mono text-xs font-medium uppercase tracking-widest text-secondary dark:text-slate-400">
                 01 / Réalisations
               </span>
-              <span className="font-mono text-xs text-slate-400 dark:text-slate-500">
+              <span className="font-mono text-xs text-secondary/70 dark:text-slate-500">
                 — 0{filteredProjects.length} / 0{projects.length}
               </span>
             </div>
@@ -422,7 +419,7 @@ export default function Projects({
             >
               Projets clés
             </h2>
-            <p className="mt-2 max-w-xl text-sm text-slate-600 dark:text-slate-400 sm:text-base">
+            <p className="mt-2 max-w-xl text-sm text-secondary dark:text-slate-400 sm:text-base">
               Filtre par domaine ou par technologie pour explorer directement
               les réalisations pertinentes pour ton équipe.
             </p>
@@ -432,7 +429,7 @@ export default function Projects({
           <div
             role="tablist"
             aria-label="Filtrer les projets par catégorie"
-            className="inline-flex flex-wrap items-center gap-1 rounded-xl border border-slate-200/90 bg-white p-1 dark:border-white/10 dark:bg-surface-dark/70"
+            className="inline-flex flex-wrap items-center gap-1 rounded-xl border border-secondary/20 bg-white p-1 dark:border-secondary/50 dark:bg-surface-dark/80"
           >
             {projectCategories.map((category) => {
               const isActive = activeCategory === category;
@@ -444,16 +441,16 @@ export default function Projects({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => onCategoryChange(category)}
-                  className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-mono text-xs font-medium transition-all ${
+                  className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-mono text-xs font-semibold transition-all ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-sm shadow-blue-600/25'
-                      : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                      ? 'bg-primary text-primary-on shadow-sm shadow-primary/25'
+                      : 'text-secondary hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                   }`}
                 >
                   <span>{category}</span>
                   <span
                     className={`text-[10px] ${
-                      isActive ? 'text-blue-100' : 'text-slate-400'
+                      isActive ? 'text-primary-on/75' : 'text-secondary/60 dark:text-slate-500'
                     }`}
                   >
                     {count}
@@ -464,13 +461,13 @@ export default function Projects({
           </div>
         </div>
 
-        {/* Secondary Tech Stack Filter Bar + Shareable URL (inspired by rmichels.com) */}
+        {/* Secondary Tech Stack Filter Bar + Shareable URL */}
         <div
           data-bp-box
-          className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200/80 bg-slate-50/80 px-4 py-3 dark:border-white/10 dark:bg-white/[0.02]"
+          className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-secondary/15 bg-secondary/[0.04] px-4 py-3 dark:border-secondary/45 dark:bg-secondary/15"
         >
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="mr-1 inline-flex items-center gap-1.5 font-mono text-[11px] text-slate-500 dark:text-slate-400">
+            <span className="mr-1 inline-flex items-center gap-1.5 font-mono text-[11px] text-secondary dark:text-slate-400">
               <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
               <span>Stack :</span>
             </span>
@@ -482,10 +479,10 @@ export default function Projects({
                   type="button"
                   aria-pressed={isSelected}
                   onClick={() => onTechChange(isSelected ? null : tech)}
-                  className={`rounded-md border px-2.5 py-1 font-mono text-[11px] font-medium transition-colors ${
+                  className={`rounded-md border px-2.5 py-1 font-mono text-[11px] font-semibold transition-colors ${
                     isSelected
-                      ? 'border-blue-500 bg-blue-600 text-white'
-                      : 'border-slate-200 bg-white text-slate-700 hover:border-blue-500/40 hover:text-blue-600 dark:border-white/10 dark:bg-surface-dark/70 dark:text-slate-300 dark:hover:border-blue-400/40 dark:hover:text-blue-300'
+                      ? 'border-primary bg-primary text-primary-on'
+                      : 'border-secondary/20 bg-white text-secondary hover:border-primary/50 hover:text-primary-ink dark:border-secondary/50 dark:bg-surface-dark/80 dark:text-slate-300 dark:hover:border-primary/50 dark:hover:text-primary'
                   }`}
                 >
                   {tech}
@@ -506,7 +503,7 @@ export default function Projects({
                 <button
                   type="button"
                   onClick={handleShareFilteredLink}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-blue-500/30 bg-blue-500/10 px-2.5 py-1 font-mono text-[11px] font-medium text-blue-700 transition-colors hover:bg-blue-500/15 dark:text-blue-300"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-primary/40 bg-primary/15 px-2.5 py-1 font-mono text-[11px] font-semibold text-primary-ink transition-colors hover:bg-primary/20 dark:text-primary"
                 >
                   <Link2 className="h-3 w-3" aria-hidden="true" />
                   <span>Copier le lien filtré</span>
@@ -514,7 +511,7 @@ export default function Projects({
                 <button
                   type="button"
                   onClick={onResetFilters}
-                  className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1 font-mono text-[11px] font-medium text-slate-600 transition-colors hover:text-slate-900 dark:border-white/10 dark:bg-surface-dark dark:text-slate-300 dark:hover:text-white"
+                  className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1 font-mono text-[11px] font-medium text-secondary transition-colors hover:text-slate-900 dark:border-secondary/50 dark:bg-surface-dark dark:text-slate-300 dark:hover:text-white"
                 >
                   <RotateCcw className="h-3 w-3" aria-hidden="true" />
                   <span>Réinitialiser</span>
@@ -526,10 +523,7 @@ export default function Projects({
 
         {/* Responsive 2-column grid OR empty state */}
         {filteredProjects.length > 0 ? (
-          <motion.div
-            layout
-            className="grid grid-cols-1 gap-6 md:grid-cols-2"
-          >
+          <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project) => (
                 <ProjectCard
@@ -543,14 +537,14 @@ export default function Projects({
             </AnimatePresence>
           </motion.div>
         ) : (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white/60 p-10 text-center dark:border-white/15 dark:bg-surface-dark/40">
-            <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+          <div className="rounded-2xl border border-dashed border-secondary/35 bg-white/60 p-10 text-center dark:border-secondary/60 dark:bg-surface-dark/40">
+            <p className="text-sm font-medium text-secondary dark:text-slate-300">
               Aucune réalisation ne combine{' '}
-              <span className="font-mono text-blue-600 dark:text-blue-400">
+              <span className="font-mono font-semibold text-primary-ink dark:text-primary">
                 {activeCategory}
               </span>{' '}
               et{' '}
-              <span className="font-mono text-blue-600 dark:text-blue-400">
+              <span className="font-mono font-semibold text-primary-ink dark:text-primary">
                 {activeTech}
               </span>
               .
@@ -558,7 +552,7 @@ export default function Projects({
             <button
               type="button"
               onClick={onResetFilters}
-              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-500"
+              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-bold text-primary-on transition-colors hover:bg-primary-hover"
             >
               <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
               <span>Afficher tous les projets</span>
@@ -567,7 +561,7 @@ export default function Projects({
         )}
       </div>
 
-      {/* Structured Case Study Modal with Prev/Next navigation (inspired by rmichels.com) */}
+      {/* Structured Case Study Modal with Prev/Next navigation */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -586,16 +580,16 @@ export default function Projects({
               exit={{ opacity: 0, scale: 0.96, y: 12 }}
               transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-white/15 dark:bg-[#0D1322]"
+              className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-secondary/25 bg-white shadow-2xl dark:border-secondary/60 dark:bg-[#111318]"
             >
               {/* Sticky modal header */}
-              <div className="sticky top-0 z-10 flex items-start justify-between border-b border-slate-200/80 bg-white/95 px-6 py-4 backdrop-blur-md dark:border-white/10 dark:bg-[#0D1322]/95">
+              <div className="sticky top-0 z-10 flex items-start justify-between border-b border-secondary/15 bg-white/95 px-6 py-4 backdrop-blur-md dark:border-secondary/45 dark:bg-[#111318]/95">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="rounded bg-blue-500/15 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-blue-600 dark:text-blue-400">
+                    <span className="rounded bg-primary/15 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-primary-ink dark:text-primary">
                       {selectedProject.index} / 0{projects.length}
                     </span>
-                    <span className="font-mono text-xs text-slate-500 dark:text-slate-400">
+                    <span className="font-mono text-xs text-secondary dark:text-slate-400">
                       {selectedProject.year} · {selectedProject.subtitle}
                     </span>
                   </div>
@@ -605,7 +599,7 @@ export default function Projects({
                   >
                     {selectedProject.title}
                   </h3>
-                  <p className="font-mono text-xs text-slate-500 dark:text-slate-400">
+                  <p className="font-mono text-xs text-secondary dark:text-slate-400">
                     {selectedProject.role}
                   </p>
                 </div>
@@ -615,7 +609,7 @@ export default function Projects({
                   type="button"
                   onClick={closeDetails}
                   aria-label="Fermer l'étude de cas"
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:text-slate-900 dark:border-white/10 dark:text-slate-400 dark:hover:text-white"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-secondary/25 text-secondary transition-colors hover:border-primary/50 hover:text-slate-900 dark:border-secondary/55 dark:text-slate-400 dark:hover:text-white"
                 >
                   <X className="h-4 w-4" aria-hidden="true" />
                 </button>
@@ -623,9 +617,8 @@ export default function Projects({
 
               {/* Structured Case Study Content */}
               <div className="space-y-6 px-6 py-5">
-                {/* Contexte */}
-                <div className="rounded-xl border border-slate-200/80 bg-slate-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]">
-                  <h4 className="font-mono text-[11px] font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                <div className="rounded-xl border border-secondary/15 bg-secondary/[0.05] p-4 dark:border-secondary/45 dark:bg-secondary/20">
+                  <h4 className="font-mono text-[11px] font-semibold uppercase tracking-wider text-primary-ink dark:text-primary">
                     Contexte &amp; objectif
                   </h4>
                   <p className="mt-1.5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
@@ -633,19 +626,17 @@ export default function Projects({
                   </p>
                 </div>
 
-                {/* Description */}
                 <div>
-                  <h4 className="mb-1.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  <h4 className="mb-1.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-secondary dark:text-slate-400">
                     Approche &amp; conception
                   </h4>
-                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  <p className="text-sm leading-relaxed text-secondary dark:text-slate-300">
                     {selectedProject.longDescription}
                   </p>
                 </div>
 
-                {/* Highlights */}
                 <div>
-                  <h4 className="mb-2.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  <h4 className="mb-2.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-secondary dark:text-slate-400">
                     Points clés réalisés
                   </h4>
                   <ul className="space-y-2">
@@ -655,7 +646,7 @@ export default function Projects({
                         className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300"
                       >
                         <CheckCircle2
-                          className="mt-0.5 h-4 w-4 shrink-0 text-blue-500"
+                          className="mt-0.5 h-4 w-4 shrink-0 text-primary-ink dark:text-primary"
                           aria-hidden="true"
                         />
                         <span>{item}</span>
@@ -664,17 +655,16 @@ export default function Projects({
                   </ul>
                 </div>
 
-                {/* Deliverables + Stack 2-column summary */}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <h4 className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    <h4 className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-secondary dark:text-slate-400">
                       Livrables
                     </h4>
                     <div className="flex flex-wrap gap-1.5">
                       {selectedProject.deliverables.map((deliv) => (
                         <span
                           key={deliv}
-                          className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200"
+                          className="rounded-md border border-secondary/20 bg-secondary/[0.05] px-2.5 py-1 text-xs font-medium text-slate-700 dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-200"
                         >
                           {deliv}
                         </span>
@@ -683,14 +673,14 @@ export default function Projects({
                   </div>
 
                   <div>
-                    <h4 className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    <h4 className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-secondary dark:text-slate-400">
                       Stack technique
                     </h4>
                     <div className="flex flex-wrap gap-1.5">
                       {selectedProject.stack.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-md border border-blue-500/25 bg-blue-500/10 px-2.5 py-1 font-mono text-xs font-medium text-blue-700 dark:text-blue-300"
+                          className="rounded-md border border-primary/35 bg-primary/15 px-2.5 py-1 font-mono text-xs font-semibold text-primary-ink dark:text-primary"
                         >
                           {tech}
                         </span>
@@ -701,15 +691,14 @@ export default function Projects({
               </div>
 
               {/* Footer: Prev/Next stepper + GitHub/Demo actions */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200/80 bg-slate-50/70 px-6 py-4 dark:border-white/10 dark:bg-black/25">
-                {/* Prev / Next project controls */}
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-secondary/15 bg-secondary/[0.04] px-6 py-4 dark:border-secondary/45 dark:bg-black/30">
                 {navPool.length > 1 ? (
                   <div className="flex items-center gap-1.5">
                     <button
                       type="button"
                       onClick={() => stepProject(-1)}
                       aria-label="Projet précédent"
-                      className="inline-flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-slate-700 transition-colors hover:border-blue-500/40 hover:text-blue-600 dark:border-white/15 dark:bg-surface-dark dark:text-slate-300 dark:hover:text-white"
+                      className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-secondary transition-colors hover:border-primary/50 hover:text-primary-ink dark:border-secondary/55 dark:bg-surface-dark dark:text-slate-300 dark:hover:text-primary"
                     >
                       <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
                       <span>Préc.</span>
@@ -718,10 +707,13 @@ export default function Projects({
                       type="button"
                       onClick={() => stepProject(1)}
                       aria-label="Projet suivant"
-                      className="inline-flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-slate-700 transition-colors hover:border-blue-500/40 hover:text-blue-600 dark:border-white/15 dark:bg-surface-dark dark:text-slate-300 dark:hover:text-white"
+                      className="inline-flex items-center gap-1 rounded-lg border border-secondary/25 bg-white px-2.5 py-1.5 font-mono text-xs font-medium text-secondary transition-colors hover:border-primary/50 hover:text-primary-ink dark:border-secondary/55 dark:bg-surface-dark dark:text-slate-300 dark:hover:text-primary"
                     >
                       <span>Suiv.</span>
-                      <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      <ChevronRight
+                        className="h-3.5 w-3.5"
+                        aria-hidden="true"
+                      />
                     </button>
                   </div>
                 ) : (
@@ -733,7 +725,7 @@ export default function Projects({
                     href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-800 transition-colors hover:bg-slate-50 dark:border-white/15 dark:bg-surface-dark dark:text-slate-200 dark:hover:bg-white/10"
+                    className="inline-flex items-center gap-2 rounded-lg border border-secondary/30 bg-white px-4 py-2 text-xs font-semibold text-slate-900 transition-colors hover:bg-secondary/10 dark:border-secondary/60 dark:bg-secondary/35 dark:text-slate-100 dark:hover:bg-secondary/55"
                   >
                     <Github className="h-3.5 w-3.5" aria-hidden="true" />
                     <span>Voir sur GitHub</span>
@@ -744,19 +736,25 @@ export default function Projects({
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-500"
+                      className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-bold text-primary-on transition-colors hover:bg-primary-hover"
                     >
                       <span>Ouvrir la démo</span>
-                      <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                      <ExternalLink
+                        className="h-3.5 w-3.5"
+                        aria-hidden="true"
+                      />
                     </a>
                   ) : (
                     <a
                       href="#contact"
                       onClick={closeDetails}
-                      className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-500"
+                      className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-bold text-primary-on transition-colors hover:bg-primary-hover"
                     >
                       <span>Demander une démo</span>
-                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      <ArrowUpRight
+                        className="h-3.5 w-3.5"
+                        aria-hidden="true"
+                      />
                     </a>
                   )}
                 </div>

@@ -67,7 +67,7 @@ export const projects = [
     image: '/projects/choozz.png',
     githubUrl: 'https://github.com/Yrdnal147',
     demoUrl: null,
-    accent: 'from-blue-500/20 via-indigo-500/10 to-transparent',
+    accent: 'from-primary/20 via-secondary/25 to-transparent',
     mockupVariant: 'choozz',
   },
   {
@@ -94,7 +94,7 @@ export const projects = [
     image: '/projects/sonoritiz.png',
     githubUrl: 'https://github.com/Yrdnal147',
     demoUrl: null,
-    accent: 'from-sky-500/20 via-blue-500/10 to-transparent',
+    accent: 'from-primary/15 via-secondary/30 to-transparent',
     mockupVariant: 'sonoritiz',
   },
   {
@@ -121,7 +121,7 @@ export const projects = [
     image: '/projects/jobconnect.png',
     githubUrl: 'https://github.com/Yrdnal147',
     demoUrl: null,
-    accent: 'from-cyan-500/20 via-blue-500/10 to-transparent',
+    accent: 'from-secondary/35 via-primary/15 to-transparent',
     mockupVariant: 'jobconnect',
   },
   {
@@ -148,7 +148,7 @@ export const projects = [
     image: '/projects/reseau-social.png',
     githubUrl: 'https://github.com/Yrdnal147',
     demoUrl: null,
-    accent: 'from-blue-600/20 via-slate-500/10 to-transparent',
+    accent: 'from-primary/15 via-secondary/25 to-transparent',
     mockupVariant: 'social',
   },
 ];
