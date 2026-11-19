@@ -6,20 +6,29 @@ export default function Education() {
   return (
     <section
       id="education"
+      aria-labelledby="education-heading"
       className="border-b border-slate-200/80 py-20 dark:border-white/10 sm:py-24"
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.4 }}
           className="mb-12"
         >
-          <p className="font-mono text-xs font-medium uppercase tracking-widest text-blue-600 dark:text-blue-400">
-            04 / Formation académique
-          </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+          <div className="flex items-center gap-2.5">
+            <span className="rounded-md bg-blue-500/10 px-2 py-0.5 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">
+              [F]
+            </span>
+            <span className="font-mono text-xs font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              04 / Formation académique
+            </span>
+          </div>
+          <h2
+            id="education-heading"
+            className="mt-2.5 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl"
+          >
             Formations &amp; diplômes
           </h2>
         </motion.div>
@@ -27,7 +36,8 @@ export default function Education() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* University Degrees */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            data-bp-box
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.4 }}
@@ -35,7 +45,7 @@ export default function Education() {
           >
             <div className="mb-5 flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                <GraduationCap className="h-5 w-5" />
+                <GraduationCap className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
                 Diplômes universitaires
@@ -74,7 +84,8 @@ export default function Education() {
 
           {/* Specialized Trainings */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            data-bp-box
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.4, delay: 0.08 }}
@@ -82,7 +93,7 @@ export default function Education() {
           >
             <div className="mb-5 flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                <Award className="h-5 w-5" />
+                <Award className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
                 Formations spécialisées
@@ -114,7 +125,7 @@ export default function Education() {
 
             <div className="mt-auto pt-6">
               <div className="rounded-xl border border-slate-200/80 bg-slate-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]">
-                <p className="font-mono text-xs text-slate-600 dark:text-slate-400">
+                <p className="font-mono text-xs leading-relaxed text-slate-600 dark:text-slate-400">
                   Cursus Génie Logiciel (Bac+5) combiné à une pratique intensive
                   en architecture mobile Flutter, écosystème React et design
                   produit Figma.
