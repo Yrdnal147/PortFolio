@@ -11,6 +11,7 @@ import {
   Briefcase,
   Users,
   Sparkles,
+  CalendarCheck,
   ChevronLeft,
   ChevronRight,
   MessageCircle,
@@ -50,6 +51,45 @@ function ProjectVisualPreview({ project }) {
               <div className="h-2 w-14 rounded-full bg-secondary/50 dark:bg-white/50" />
               <div className="mt-1.5 h-2 w-10 rounded-full bg-primary/70" />
             </div>
+          </div>
+        </div>
+      )}
+
+      {variant === 'gesform' && (
+        <div className="w-64 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg transition-transform duration-300 group-hover:-translate-y-1 dark:border-secondary/60 dark:bg-surface-dark">
+          <div className="mb-3 flex items-center justify-between">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-soft px-2.5 py-0.5 text-[10px] font-bold text-primary-ink dark:bg-primary/15 dark:text-primary">
+              <CalendarCheck className="h-3 w-3" aria-hidden="true" /> Planning
+              &amp; Salles
+            </span>
+            <span className="rounded-md bg-secondary px-2 py-0.5 font-mono text-[9px] font-bold text-white">
+              Vercel
+            </span>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-canvas-light px-3 py-2 dark:border-secondary/50 dark:bg-canvas-dark">
+              <div className="space-y-1">
+                <div className="h-2 w-20 rounded-full bg-ink/80 dark:bg-white/85" />
+                <div className="h-1.5 w-14 rounded-full bg-secondary/40 dark:bg-white/35" />
+              </div>
+              <span className="rounded-full bg-primary px-2 py-0.5 text-[9px] font-bold text-primary-on">
+                Salle libre
+              </span>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="rounded-xl border border-slate-200 bg-canvas-light p-2 dark:border-secondary/50 dark:bg-canvas-dark">
+                <div className="h-1.5 w-12 rounded-full bg-secondary/50 dark:bg-white/45" />
+                <div className="mt-1.5 h-2 w-10 rounded-full bg-primary" />
+              </div>
+              <div className="rounded-xl border border-slate-200 bg-canvas-light p-2 dark:border-secondary/50 dark:bg-canvas-dark">
+                <div className="h-1.5 w-14 rounded-full bg-secondary/50 dark:bg-white/45" />
+                <div className="mt-1.5 h-2 w-8 rounded-full bg-secondary/60 dark:bg-secondary-light" />
+              </div>
+            </div>
+          </div>
+          <div className="mt-3 flex items-center justify-between border-t border-slate-200/80 pt-2 font-mono text-[9px] text-secondary dark:border-secondary/45 dark:text-slate-400">
+            <span>API Laravel</span>
+            <span>Présences · Cursus</span>
           </div>
         </div>
       )}

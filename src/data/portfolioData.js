@@ -4,16 +4,16 @@ export const personalInfo = {
   fullName: 'Samuel Landry Woulle Ndedy',
   initials: 'SN',
   photoPath: '/photo-samuel.jpg',
-  shortRole: 'Développeur Mobile & Web (Flutter • React) & Designer UI/UX',
+  shortRole: 'Développeur Mobile & Web (Flutter, React Js, Django Rest Framework) & Designer UI/UX',
   headline:
-    'Je crée des applications mobiles et des sites web simples, beaux et efficaces.',
+    'Je crée des applications mobiles et des sites web, ergoniques et agréables à utiliser, avec un design moderne et une expérience utilisateur fluide.',
   tagline:
-    "Titulaire d'un cursus Master en Génie Logiciel, j'accompagne entreprises et équipes de la première maquette jusqu'à la mise en ligne, sur téléphone comme sur ordinateur.",
-  availability: 'Disponible — Douala & à distance',
+    "Titulaire d'un Master en Génie Logiciel, je participe à la conception et au développement d'applications web et mobiles de la description des besoins metiers à la mise en production.",
+  availability: 'CDI, stage Professionnel, missions freelance',
   responseTime: 'Réponse habituelle en moins de 24h',
   location: 'Douala, Cameroun',
   email: 'samuellandry147@gmail.com',
-  phoneDisplay: '+237 6 58 00 44 24',
+  phoneDisplay: '+237 6 58 00 44 24/ 641  00 44 24',
   whatsappUrl: 'https://wa.me/237658004424',
   githubUrl: 'https://github.com/Yrdnal147',
   githubHandle: '@Yrdnal147',
@@ -22,9 +22,9 @@ export const personalInfo = {
   cvPath: '/cv-samuel-woulle-ndedy.pdf',
   copyrightYear: 2026,
   keyMetrics: [
-    { value: '+4 ans', label: 'Expérience terrain' },
+    { value: '+4 ans', label: 'Expérience dans le développement' },
     { value: 'Master 2', label: 'Génie Logiciel' },
-    { value: 'De A à Z', label: 'Design, Mobile & Web' },
+
   ],
 };
 
@@ -51,20 +51,42 @@ export const projects = [
     year: '2025',
     categories: ['mobile', 'design'],
     summary:
-      'Trouver les meilleurs restaurants, bars et lieux de sortie à Douala et Yaoundé, consulter les menus et réserver une table VIP en quelques clics.',
+      'Trouver les meilleurs restaurants, bars et lieux de sortie à Douala, consulter les menus et réserver une table VIP en quelques clics.',
     problem:
-      "Chercher un bon lieu de sortie à Douala ou Yaoundé demande souvent des appels et des recherches éparpillées. L'objectif de Choozz est de réunir adresses, menus et réservations VIP dans une seule application simple.",
+      "Chercher un bon lieu de sortie à Douala demande souvent non seulement une cbonne connaissance de la ville mais aussides appels et des recherches éparpillées. L'objectif de Choozz est de réunir adresses, prix, menus et réservations VIP dans une seule plateforme.",
     whatIBuilt: [
       'Conception complète des écrans et du parcours utilisateur sur Figma.',
-      'Catalogue géolocalisé pour découvrir les établissements de Douala et Yaoundé.',
-      'Consultation des menus détaillés et réservation VIP directe depuis le téléphone.',
-      'Base de données temps réel sécurisée avec Supabase.',
+      'Catalogue géolocalisé pour découvrir les établissements de Douala.',
+      'Consultation des menus détaillés et réservation VIP directe depuis le téléphone ou via le site web.',
+      'Coté restaurant, gestion des réservations et des menus via une interface web sécurisée et surtout haut niveau de la visibilité de la structure et de ses services.',
+      'Base de données en temps réel sécurisée avec Supabase.',
     ],
-    stack: ['Flutter', 'Supabase', 'Figma'],
+    stack: ['Flutter', 'Supabase', 'Figma', 'React Js'],
     image: '/projects/choozz.png',
     githubUrl: 'https://github.com/Yrdnal147',
     demoUrl: null,
     mockupVariant: 'choozz',
+  },
+  {
+    id: 'gesform',
+    title: 'Gesform',
+    badge: 'Application Web Fullstack & Design',
+    year: '2025',
+    categories: ['web', 'design'],
+    summary:
+      'Application web complète de gestion de centre de formation (projet de fin de formation OIF) : planification des cours, disponibilité des salles et formateurs, suivi du cursus des étudiants et gestion des présences et absences.',
+    problem:
+      "Centraliser toute l'organisation quotidienne d'un centre de formation pour éviter les conflits de salles ou de formateurs et suivre facilement la progression et l'assiduité de chaque étudiant.",
+    whatIBuilt: [
+      "Backend & API REST (Laravel + Supabase) : conception de l'architecture serveur et développement de l'API REST gérant les cours, la disponibilité des salles et des formateurs, le suivi des cursus ainsi que les absences et présences.",
+      "Application web (React JS) : développement d'une interface claire, rapide et réactive à partir des maquettes réalisées sur Figma.",
+      'Hébergement & Déploiement (Vercel) : configuration, mise en ligne et hébergement continu du site web sur Vercel.',
+    ],
+    stack: ['React JS', 'Laravel', 'API REST', 'Supabase', 'Figma', 'Vercel'],
+    image: '/projects/gesform.png',
+    githubUrl: 'https://github.com/Yrdnal147',
+    demoUrl: null,
+    mockupVariant: 'gesform',
   },
   {
     id: 'sonoritiz',
@@ -73,15 +95,15 @@ export const projects = [
     year: '2025',
     categories: ['mobile', 'design'],
     summary:
-      "Une application d'écoute musicale en mode sombre, pensée pour le confort visuel et connectée à un catalogue ouvert de titres Creative Commons.",
+      "Une application d'écoute musicale 100% gratuite, pensée pour le confort visuel et connectée à un catalogue ouvert de titres Creative Commons.",
     problem:
       "Proposer une expérience d'écoute musicale fluide, moderne et agréable le soir, permettant de découvrir et lancer des morceaux libres de droits sans publicité envahissante.",
     whatIBuilt: [
       "Création d'une interface sombre élégante et intuitive sur Figma.",
       'Lecteur audio fluide avec gestion de la lecture en continu.',
-      "Connexion à une API de musiques Creative Commons pour explorer les titres en direct.",
+      "Connexion à une API des musiques Creative Commons  pour explorer et ecouter des titres .",
     ],
-    stack: ['Flutter', 'API REST', 'Figma'],
+    stack: ['Flutter', 'API REST', 'Figma', 'Audio Streaming', 'Design UI/UX', 'Django Rest Framework'],
     image: '/projects/sonoritiz.png',
     githubUrl: 'https://github.com/Yrdnal147',
     demoUrl: null,
@@ -90,11 +112,11 @@ export const projects = [
   {
     id: 'jobconnect',
     title: 'JobConnect',
-    badge: 'Site Web & Application mobile',
+    badge: 'Application mobile',
     year: '2025',
-    categories: ['web', 'mobile'],
+    categories: ['mobile'],
     summary:
-      "Une plateforme complète pour publier des offres d'emploi et mettre rapidement en relation recruteurs et candidats, sur ordinateur comme sur mobile.",
+      "Une plateforme intelligente basée sur un système multi-agents IA pour publier des offres d'emploi et mettre rapidement en relation recruteurs et candidats(jeunes diplômés,étudiants) basés le matching intelligent et la recommandation de cv.",
     problem:
       "Faciliter la rencontre entre entreprises qui recrutent et talents disponibles, en offrant un espace web clair pour les recruteurs et une application mobile pratique pour les candidats.",
     whatIBuilt: [
@@ -109,8 +131,8 @@ export const projects = [
     mockupVariant: 'jobconnect',
   },
   {
-    id: 'reseau-social',
-    title: 'Réseau Social Multiplateforme',
+    id: 'SnapChoice ',
+    title: 'Réseau Social Communautaire',
     badge: 'Application mobile (Projet en équipe)',
     year: '2024',
     categories: ['mobile'],
@@ -119,11 +141,10 @@ export const projects = [
     problem:
       "Concevoir en équipe une application sociale fiable, capable de fonctionner aussi bien sur Android que sur iOS, avec une organisation de travail professionnelle.",
     whatIBuilt: [
-      "Développement du fil d'actualité et des écrans communautaires en Flutter.",
-      "Mise en place de l'authentification et du stockage des données avec Firebase.",
-      "Travail collaboratif en équipe structuré avec Git et revues de code.",
+  
+      "Dans ce projeet, j'ai participé à la conception des interfaces utilisateurs, à la mise en place des authentifications des utilisateurs, à la création du fil d'actualité et à l'intégration de fonctionnalités de publications .",
     ],
-    stack: ['Flutter', 'Dart', 'Firebase', 'Git'],
+    stack: ['Flutter', 'Dart', 'Firebase', 'Git', 'Laravel', 'Design UI/UX'],
     image: '/projects/reseau-social.png',
     githubUrl: 'https://github.com/Yrdnal147',
     demoUrl: null,
@@ -133,9 +154,9 @@ export const projects = [
 
 export const servicesAndSkills = [
   {
-    id: 'mobile',
+    id: 'mobile-apps',
     title: 'Applications Mobiles',
-    subtitle: 'Android & iOS',
+    subtitle: ' Cross platform (Android & iOS)',
     icon: 'Smartphone',
     plainDescription:
       'Je conçois des applications rapides et agréables à prendre en main sur téléphone, pensées pour fonctionner sans ralentissement au quotidien.',
@@ -144,25 +165,26 @@ export const servicesAndSkills = [
       'Flutter',
       'Dart',
       'Architecture multiplateforme',
-      'Transition React Native (Expo)',
+      
     ],
   },
   {
     id: 'web-backend',
-    title: 'Sites & Plateformes Web',
-    subtitle: 'Interface & Serveur',
+    title: 'Sites, Backend & Déploiement',
+    subtitle: 'Interface, API REST & Hébergement',
     icon: 'Globe',
     plainDescription:
-      'Je construis des sites web modernes et des plateformes connectées à vos données, sécurisées et faciles à faire évoluer avec votre activité.',
-    toolsLabel: 'Technologies utilisées',
+      "Je construis des applications web complètes : interface moderne, logique serveur solide (APIs REST et bases de données) et mise en ligne clé en main sur un hébergement fiable.",
+    toolsLabel: 'Technologies & hébergement',
     items: [
       'React JS',
-      'Laravel',
+      'Laravel (API REST)',
       'Django REST Framework',
-      'APIs REST',
+      'Architecture Backend',
       'Supabase',
       'Firebase',
       'MySQL',
+      'Déploiement & Hébergement (Vercel)',
     ],
   },
   {
@@ -203,8 +225,8 @@ export const experiences = [
     current: false,
     type: 'Stage',
     description:
-      "Développement d'applications web complètes (interface et serveur), création d'APIs REST et conception de maquettes interactives sur Figma.",
-    tags: ['Web Fullstack', 'APIs REST', 'Figma'],
+      "Conception et développement complet de Gesform (gestion de formations, salles, formateurs, cursus et présences) : maquettes Figma, application web React JS hébergée sur Vercel et API REST backend développée avec Laravel et Supabase.",
+    tags: ['React JS', 'Laravel', 'Django', 'API REST', 'Supabase', 'Vercel', 'Figma'],
   },
   {
     id: 'localhost-digital',
@@ -216,7 +238,7 @@ export const experiences = [
     type: 'Stage',
     description:
       "Développement en équipe d'une application mobile communautaire (réseau social) fonctionnant sur plusieurs plateformes avec Flutter.",
-    tags: ['Flutter', 'Firebase', 'Travail en équipe'],
+    tags: ['Flutter', 'Firebase', 'Travail en équipe', 'php'],
   },
   {
     id: 'fulife-consulting',
@@ -249,8 +271,8 @@ export const education = {
     {
       title: 'Master 2 en Génie Logiciel',
       institution: 'IUGET Douala',
-      period: 'Depuis nov. 2025',
-      current: true,
+      period: ' nov. 2025 - Juillet 2026',
+      current: false,
     },
     {
       title: 'Master 1 en Génie Logiciel',
@@ -271,7 +293,7 @@ export const education = {
       current: false,
     },
   ],
-  certifications: [
+  Attestations: [
     {
       title: 'Développement Web Fullstack',
       institution: 'OIF Inchclass Douala',
