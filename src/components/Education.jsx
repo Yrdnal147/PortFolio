@@ -3,6 +3,9 @@ import { GraduationCap, Award } from 'lucide-react';
 import { education } from '../data/portfolioData';
 
 export default function Education() {
+  const degrees = education.degrees || [];
+  const attestations = education.Attestations || education.certifications || [];
+
   return (
     <section
       id="education"
@@ -52,7 +55,7 @@ export default function Education() {
             </div>
 
             <ul className="divide-y divide-slate-200 dark:divide-secondary/40">
-              {education.degrees.map((degree) => (
+              {degrees.map((degree) => (
                 <li
                   key={`${degree.title}-${degree.period}`}
                   className="py-4 first:pt-0 last:pb-0"
@@ -94,12 +97,12 @@ export default function Education() {
                 <Award className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="text-lg font-bold text-ink dark:text-white">
-                Formations spécialisées
+                Attestations &amp; Formations
               </h3>
             </div>
 
             <ul className="divide-y divide-slate-200 dark:divide-secondary/40">
-              {education.certifications.map((cert) => (
+              {attestations.map((cert) => (
                 <li
                   key={`${cert.title}-${cert.period}`}
                   className="py-4 first:pt-0 last:pb-0"

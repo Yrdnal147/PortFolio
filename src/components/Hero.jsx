@@ -11,6 +11,13 @@ import { personalInfo } from '../data/portfolioData';
 
 export default function Hero({ reducedMotion }) {
   const [photoError, setPhotoError] = useState(false);
+  const keyMetrics = personalInfo.keyMetrics || [];
+  const metricsGridClass =
+    keyMetrics.length === 1
+      ? 'grid-cols-1'
+      : keyMetrics.length === 2
+        ? 'grid-cols-2'
+        : 'grid-cols-3';
 
   return (
     <section
@@ -149,22 +156,24 @@ export default function Hero({ reducedMotion }) {
                 </span>
               </div>
 
-              {/* 3 instant trust & clarity metrics */}
-              <div className="mt-4 grid grid-cols-3 gap-2.5">
-                {personalInfo.keyMetrics.map((metric) => (
-                  <div
-                    key={metric.label}
-                    className="rounded-2xl border border-slate-200/80 bg-white p-3 text-center dark:border-secondary/45 dark:bg-canvas-dark/80"
-                  >
-                    <p className="text-base font-extrabold text-ink dark:text-white sm:text-lg">
-                      {metric.value}
-                    </p>
-                    <p className="mt-0.5 text-[11px] font-medium leading-tight text-secondary dark:text-slate-400">
-                      {metric.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              {/* Instant trust & clarity metrics */}
+              {keyMetrics.length > 0 && (
+                <div className={`mt-4 grid gap-2.5 ${metricsGridClass}`}>
+                  {keyMetrics.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="rounded-2xl border border-slate-200/80 bg-white p-3 text-center dark:border-secondary/45 dark:bg-canvas-dark/80"
+                    >
+                      <p className="text-base font-extrabold text-ink dark:text-white sm:text-lg">
+                        {metric.value}
+                      </p>
+                      <p className="mt-0.5 text-[11px] font-medium leading-tight text-secondary dark:text-slate-400">
+                        {metric.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         </div>
